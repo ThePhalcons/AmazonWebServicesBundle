@@ -5,11 +5,30 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="aws_sqs.class">Cybernox\AmazonWebServicesBundle\WebServices\SimpleQueueService</parameter>
+        <parameter key="aws.class">Cybernox\AmazonWebServicesBundle\Services\Service</parameter>
+        <parameter key="aws_sqs.class">Cybernox\AmazonWebServicesBundle\Services\SimpleQueueService</parameter>
     </parameters>
 
     <services>
+        <service id="aws" class="%aws.class%">
+            <argument type="collection">
+                <argument key="key">%cybernox_amazon_web_services.key%</argument>
+                <argument key="secret_key">%cybernox_amazon_web_services.secret_key%</argument>
+                <argument key="account_id">%cybernox_amazon_web_services.account_id%</argument>
+                <argument key="canonical_id">%cybernox_amazon_web_services.canonical_id%</argument>
+                <argument key="canonical_name">%cybernox_amazon_web_services.canonical_name%</argument>
+                <argument key="mfa_serial">%cybernox_amazon_web_services.mfa_serial%</argument>
+                <argument key="cloudfront_keypair_id">%cybernox_amazon_web_services.cloudfront_keypair_id%</argument>
+                <argument key="cloudfront_private_key_pem">%cybernox_amazon_web_services.cloudfront_private_key_pem%</argument>
+                <argument key="default_cache_config">%cybernox_amazon_web_services.default_cache_config%</argument>
+                <argument key="enable_extensions">%cybernox_amazon_web_services.enable_extensions%</argument>
+                <argument key="certificate_authority">%cybernox_amazon_web_services.certificate_authority%</argument>
+             </argument>
+        </service>
+
         <service id="aws_sqs" class="%aws_sqs.class%">
+            <argument type="service" id="aws" />
+            <call method="loadServiceObject" />
         </service>
     </services>
 </container>
