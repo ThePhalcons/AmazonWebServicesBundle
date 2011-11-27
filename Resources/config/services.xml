@@ -5,8 +5,8 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="aws.class">Cybernox\AmazonWebServicesBundle\Services\Service</parameter>
-        <parameter key="aws_sqs.class">Cybernox\AmazonWebServicesBundle\Services\SimpleQueueService</parameter>
+        <parameter key="aws.class">Cybernox\AmazonWebServicesBundle\AmazonWebServices</parameter>
+        <parameter key="aws_factory.class">Cybernox\AmazonWebServicesBundle\AmazonWebServicesFactory</parameter>
     </parameters>
 
     <services>
@@ -26,9 +26,96 @@
              </argument>
         </service>
 
-        <service id="aws_sqs" class="%aws_sqs.class%">
+        <service id="aws_factory" class="%aws_factory.class%" />
+
+        <service id="aws_as" class="AmazonAS" factory-service="aws_factory" factory-method="get">
             <argument type="service" id="aws" />
-            <call method="loadServiceObject" />
+            <argument>AS</argument>
         </service>
+        <service id="aws_cloud_formation" class="AmazonCloudFormation" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>CloudFormation</argument>
+        </service>
+
+        <service id="aws_cloud_front" class="AmazonCloudFront" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>CloudFront</argument>
+        </service>
+
+        <service id="aws_cloud_watch" class="AmazonCloudWatch" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>CloudWatch</argument>
+        </service>
+
+        <service id="aws_ec2" class="AmazonEC2" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>EC2</argument>
+        </service>
+
+        <service id="aws_elb" class="AmazonELB" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>ELB</argument>
+        </service>
+
+        <service id="aws_emr" class="AmazonEMR" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>EMR</argument>
+        </service>
+
+        <service id="aws_elasi_cache" class="AmazonElastiCache" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>ElastiCache</argument>
+        </service>
+
+        <service id="aws_elastic_beanstalk" class="AmazonElasticBeanstalk" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>ElasticBeanstalk</argument>
+        </service>
+
+        <service id="aws_iam" class="AmazonIAM" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>IAM</argument>
+        </service>
+
+        <service id="aws_import_export" class="AmazonImportExport" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>ImportExport</argument>
+        </service>
+
+        <service id="aws_rds" class="AmazonRDS" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>RDS</argument>
+        </service>
+
+        <service id="aws_s3" class="AmazonS3" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>S3</argument>
+        </service>
+
+        <service id="aws_sdb" class="AmazonSDB" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>SDB</argument>
+        </service>
+
+        <service id="aws_ses" class="AmazonSES" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>SES</argument>
+        </service>
+
+                <service id="aws_sns" class="AmazonSNS" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>SNS</argument>
+        </service>
+
+        <service id="aws_sqs" class="AmazonSQS" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>SQS</argument>
+        </service>
+
+        <service id="aws_sts" class="AmazonSTS" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>STS</argument>
+        </service>
+
     </services>
 </container>
