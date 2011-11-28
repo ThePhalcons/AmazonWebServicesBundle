@@ -62,7 +62,7 @@
             <argument>EMR</argument>
         </service>
 
-        <service id="aws_elasi_cache" class="AmazonElastiCache" factory-service="aws_factory" factory-method="get">
+        <service id="aws_elasti_cache" class="AmazonElastiCache" factory-service="aws_factory" factory-method="get">
             <argument type="service" id="aws" />
             <argument>ElastiCache</argument>
         </service>
@@ -102,7 +102,7 @@
             <argument>SES</argument>
         </service>
 
-                <service id="aws_sns" class="AmazonSNS" factory-service="aws_factory" factory-method="get">
+        <service id="aws_sns" class="AmazonSNS" factory-service="aws_factory" factory-method="get">
             <argument type="service" id="aws" />
             <argument>SNS</argument>
         </service>
