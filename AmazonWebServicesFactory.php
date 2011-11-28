@@ -27,15 +27,12 @@ class AmazonWebServicesFactory
 
     public function get(AmazonWebServices $aws, $serviceType)
     {
-        if ($this->isValidServiceType($serviceType))
+        if (! $this->isValidServiceType($serviceType))
         {
-            $serviceObject = 'Amazon' . $serviceType;
-        }
-        else
-        {
-            // TODO: Throw an exception
+            throw new \RuntimeException(sprintf('Invalid Amazon Web Service Type requested [%s]', $serviceType));
         }
 
+        $serviceObject = 'Amazon' . $serviceType;
         return new $serviceObject($aws->getKey(), $aws->getSecretKey());
     }
 
