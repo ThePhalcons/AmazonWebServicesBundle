@@ -52,6 +52,45 @@ Once objects have been created, you have full access to the SDK. Please see the 
 
 5) Run `bin/vendors install` to have Symfony download and install the packages
 
+6) Set up your configuration.
+
+6a) First configure your parameters.ini:
+
+    // app/config/parameters.ini
+    [parameters]
+        ...
+
+        ; Amazon Web Services Configuration. Found in the AWS Security Credentials.
+        aws_key                        = YOUR_KEY
+        aws_secret_key                 = YOUR_SECRET_KEY
+        aws_account_id                 = YOUR_ACCOUNT_ID
+        aws_canonical_id               = YOUR_CONONICAL_ID
+        aws_canonical_name             = YOUR_CONONICAL_NAME
+        aws_mfa_serial                 = YOUR_MFA_SERIAL
+        aws_cloudfront_keypair_id      = YOUR_CLOUDFRONT_KEYPAIR_ID
+        aws_cloudfront_private_key_pem = YOUR_CLOUDFRONT_PRIVATE_KEY_PEM
+
+**Note, presently only aws_key and aws_secret_key are being used when constructing objects. From the quick overview I have done, I do not see any of the AWS SDK for PHP objectes using the other parameters in any of their constructors.  Setting them is fine, but it won't do anything. My todo list includes researching how/where they are used in the SDK, and methods for using them shall be provided at that time.**
+
+6b) Set up your application configuration:
+
+    // app/config/config.yml
+    # Amazon Web Services Configuration
+    cybernox_amazon_web_services:
+        key:                        %aws_key%
+        secret_key:                 %aws_secret_key%
+        account_id:                 %aws_account_id%
+        canonical_id:               %aws_canonical_id%
+        canonical_name:             %aws_canonical_name%
+        mfa_serial:                 %aws_mfa_serial%
+        cloudfront_keypair_id:      %aws_cloudfront_keypair_id%
+        cloudfront_private_key_pem: %aws_cloudfront_private_key_pem%
+        default_cache_config:       apc
+        enable_extensions:          false
+        certificate_authority:      false
+
+**Note, as in 6a) only the key and secret_key are presently being used, so it is safe to omit the rest if you wish. You're also welcome to skip setting the configurations in parameters.ini (6a) and set the values directly in config.yml, however, I'm following the example that Sensio used for Symfony with regards to database setup, and keeping the actual private configuration values in parameters.ini and utilizing them in config.yml.**
+
 ## Usage ##
 
 Once installed, you simply need to request the appropriate service for the Amazon Web Service object you wish to use. The returned object will then allow you full access the the API for the requested service.
