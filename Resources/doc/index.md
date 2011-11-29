@@ -19,7 +19,7 @@ Once objects have been created, you have full access to the SDK. Please see the 
         version=1.4.7
 
     [AmazonWebServicesBundle]
-        git=http://github.com/mbadolato/AmazonWebServicesBundle.git
+        git=http://github.com/Cybernox/AmazonWebServicesBundle.git
         target=/bundles/Cybernox/AmazonWebServicesBundle
 
 2) Add AmazonWebServicesBundle to your application kernel:
