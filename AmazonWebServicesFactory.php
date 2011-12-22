@@ -33,7 +33,7 @@ class AmazonWebServicesFactory
         }
 
         $serviceObject = 'Amazon' . $serviceType;
-        return new $serviceObject($aws->getKey(), $aws->getSecretKey());
+        return new $serviceObject($aws->getParameters());
     }
 
     private function isValidServiceType($type)
