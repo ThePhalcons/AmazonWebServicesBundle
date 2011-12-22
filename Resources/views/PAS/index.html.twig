@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Test Amazon Product Advertising API</title>
+        <style type="text/css">
+            .output{
+                background-color : lightgray;
+                margin:10px;
+                padding:10px;
+                font-family:monospace;
+                }
+        </style>
+    </head>
+
+    <body>
+        <h1>Test Amazon Product Advertising API</h1>
+
+        <h2>Product search</h2>
+
+        <form action="{{ path('AmazonWebServicesBundle_pas_index') }}" method="POST">
+            <input name="searchKeyword" type="text" value="{{ searchKeyword }}"/>
+            <button type="submit">Search</button>
+        </form>
+
+        <div class="output">
+            {{ responseSearch }}
+        </div>
+        <div class="output">
+            {{ statusSearch }}
+        </div>
+
+        <hr/>
+
+        <h2>Order</h2>
+
+        <form action="{{ path('AmazonWebServicesBundle_pas_index') }}" method="POST">
+            <input name="orderReference" type="text" value="{{ orderReference }}"/>
+            <button type="submit">Search</button>
+        </form>
+
+        <div class="output">
+            {{ responseOrder }}
+        </div>
+        <div class="output">
+            {{ statusOrder }}
+        </div>
+        <div class="output">
+            <a href="{{ purchaseUrl }}">Purchase Url</a>
+        </div>
+    </body>
+</html>
