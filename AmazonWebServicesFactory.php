@@ -23,6 +23,7 @@ class AmazonWebServicesFactory
         'SNS',
         'SQS',
         'STS',
+        'PAS',
     );
 
     public function get(AmazonWebServices $aws, $serviceType)
