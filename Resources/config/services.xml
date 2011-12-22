@@ -13,7 +13,7 @@
         <service id="aws" class="%aws.class%">
             <argument type="collection">
                 <argument key="key">%cybernox_amazon_web_services.key%</argument>
-                <argument key="secret_key">%cybernox_amazon_web_services.secret_key%</argument>
+                <argument key="secret">%cybernox_amazon_web_services.secret%</argument>
                 <argument key="account_id">%cybernox_amazon_web_services.account_id%</argument>
                 <argument key="canonical_id">%cybernox_amazon_web_services.canonical_id%</argument>
                 <argument key="canonical_name">%cybernox_amazon_web_services.canonical_name%</argument>

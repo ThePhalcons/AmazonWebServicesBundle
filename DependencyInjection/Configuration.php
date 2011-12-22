@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('key')->isRequired()->end()
-                ->scalarNode('secret_key')->isRequired()->end()
+                ->scalarNode('secret')->isRequired()->end()
                 ->scalarNode('account_id')->end()
                 ->scalarNode('canonical_id')->end()
                 ->scalarNode('canonical_name')->end()

@@ -61,8 +61,9 @@ class AmazonWebServices
         return $this->parameters['mfa_serial'];
     }
 
-    public function getSecretKey()
+    public function getSecret()
     {
-        return $this->parameters['secret_key'];
+        return $this->parameters['secret'];
     }
+    
 }
