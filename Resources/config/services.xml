@@ -118,10 +118,5 @@
             <argument>STS</argument>
         </service>
 
-        <service id="aws_pas" class="AmazonSTS" factory-service="aws_factory" factory-method="get">
-            <argument type="service" id="aws" />
-            <argument>PAS</argument>
-        </service>
-
     </services>
 </container>
