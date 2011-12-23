@@ -28,7 +28,6 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('default_cache_config')->end()
                 ->booleanNode('enable_extensions')->defaultFalse()->end()
                 ->booleanNode('certificate_authority')->defaultFalse()->end()
-                ->scalarNode('assoc_id')->end()
             ->end();
 
         return $treeBuilder;
