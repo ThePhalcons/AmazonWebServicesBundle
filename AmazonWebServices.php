@@ -66,7 +66,7 @@ class AmazonWebServices
         return $this->parameters['secret'];
     }
 
-    public function getParamters()
+    public function getParameters()
     {
         return $this->parameters;
     }
