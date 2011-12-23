@@ -10,7 +10,7 @@
     </parameters>
 
     <services>
-        <service id="aws" class="%aws.class%">
+        <service id="aws" class="%aws.class%" public="false">
             <argument type="collection">
                 <argument key="key">%cybernox_amazon_web_services.key%</argument>
                 <argument key="secret">%cybernox_amazon_web_services.secret%</argument>
