@@ -83,7 +83,7 @@ Once objects have been created, you have full access to the SDK. Please see the 
     # Amazon Web Services Configuration
     cybernox_amazon_web_services:
         key:                        %aws_key%
-        secret_key:                 %aws_secret_key%
+        secret:                     %aws_secret_key%
         account_id:                 %aws_account_id%
         canonical_id:               %aws_canonical_id%
         canonical_name:             %aws_canonical_name%
