@@ -67,7 +67,7 @@ Once objects have been created, you have full access to the SDK. Please see the 
 
         ; Amazon Web Services Configuration. Found in the AWS Security Credentials.
         aws_key                        = YOUR_KEY
-        aws_secret_key                 = YOUR_SECRET_KEY
+        aws_secret                     = YOUR_SECRET_KEY
         aws_account_id                 = YOUR_ACCOUNT_ID
         aws_canonical_id               = YOUR_CONONICAL_ID
         aws_canonical_name             = YOUR_CONONICAL_NAME
@@ -83,7 +83,7 @@ Once objects have been created, you have full access to the SDK. Please see the 
     # Amazon Web Services Configuration
     cybernox_amazon_web_services:
         key:                        %aws_key%
-        secret_key:                 %aws_secret_key%
+        secret:                     %aws_secret%
         account_id:                 %aws_account_id%
         canonical_id:               %aws_canonical_id%
         canonical_name:             %aws_canonical_name%
