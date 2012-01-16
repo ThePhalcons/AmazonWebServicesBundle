@@ -14,14 +14,10 @@ Once objects have been created, you have full access to the SDK. Please see the 
 
 1) Add the AWS SDK for PHP library and the Amazon Web Services Bundle to your project's deps file:
 
-**IMPORTANT: The aws-sdk-for-php library managed to really hork things when the 1.5.0 release came out. This is due to their requirement to have a config.inc.php file present, which contains default credential information.**
-
-**You can use the official distro by changing 'Cybernox' to 'amazonwebservices' in the `aws-sdk-for-php` config below, but I recommend just using mine (from Cybernox) for the time being. At the moment, the only difference is the inclusion of the file, which doesn't seem to actually need values set, merely to exist. I'm going to see if I can refactor the code a bit and dynamically get the configuration it's looking for passed in, avoiding this issue.**
-
 **I have not yet fully tested the 1.5 release, so if anyone finds problems, please let me know and I'll take a 1.4.7 version that can be used for now.**
 
     [aws-sdk-for-php]
-        git=http://github.com/Cybernox/aws-sdk-for-php.git
+        git=http://github.com/amazonwebservices/aws-sdk-for-php.git
 
     [AmazonWebServicesBundle]
         git=http://github.com/Cybernox/AmazonWebServicesBundle.git

@@ -9,6 +9,11 @@ class AmazonWebServices
     public function __construct(array $parameters)
     {
         $this->parameters = $parameters;
+
+        \CFCredentials::set(array(
+            'runtime'  => $parameters,
+            '@default' => 'runtime'
+        ));
     }
 
     public function accountId()
