@@ -154,6 +154,12 @@ _Please note, at this time, thorough testing has not been completed. Because thi
   </tr>
 
   <tr>
+    <td>aws_dynamo_db</td>
+    <td><a href="http://docs.amazonwebservices.com/AWSSDKforPHP/latest/#i=AmazonDynamoDB">AmazonDynamoDB</a></td>
+    <td>Amazon DynamoDB</td>
+  </tr>
+
+  <tr>
     <td>aws_ec2</td>
     <td><a href="http://docs.amazonwebservices.com/AWSSDKforPHP/latest/#i=AmazonEC2">AmazonEC2</a></td>
     <td>Amazon Elastic Compute Cloud (EC2)</td>

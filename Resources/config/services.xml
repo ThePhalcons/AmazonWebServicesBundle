@@ -47,6 +47,11 @@
             <argument>CloudWatch</argument>
         </service>
 
+        <service id="aws_dynamo_db" class="AmazonDynamoDB" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>DynamoDB</argument>
+        </service>
+
         <service id="aws_ec2" class="AmazonEC2" factory-service="aws_factory" factory-method="get">
             <argument type="service" id="aws" />
             <argument>EC2</argument>

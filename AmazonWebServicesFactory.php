@@ -9,6 +9,7 @@ class AmazonWebServicesFactory
         'CloudFormation',
         'CloudFront',
         'CloudWatch',
+        'DynamoDB',
         'EC2',
         'ELB',
         'EMR',
