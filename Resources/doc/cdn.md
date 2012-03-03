@@ -15,11 +15,11 @@ configuration file paths are the ones that you could have under MacOS X with MAM
 For testing purposes, we simulate the behavior of the production website the following way :
 
 * on development machines :
- * the URL of the project must be `http://local.chefjerome.com`
- * and all the assets will be accessible through `http://localcdn.chefjerome.com`
+ * the URL of the project must be `http://local.acme.com`
+ * and all the assets will be accessible through `http://localcdn.acme.com`
 * on production servers :
  * the URL of the project can be whatever you want.
- * the CDN will be hosted on Amazon S3, and accessible through `http://cdn.chefjerome.com`
+ * the CDN will be hosted on Amazon S3, and accessible through `http://cdn.acme.com`
 
 Let's first try to make it work locally : append these lines to your `hosts`: 
 
@@ -28,8 +28,8 @@ sudo nano /private/etc/hosts
 ```
 
 ```
-127.0.0.1       local.chefjerome.com
-127.0.0.1       localcdn.chefjerome.com
+127.0.0.1       local.acme.com
+127.0.0.1       localcdn.acme.com
 ```
 
 Then, update the Virtual Hosts of your local server in order to handle these calls :
@@ -40,13 +40,13 @@ sudo nano /Applications/MAMP/conf/apache/httpd.conf
 
 ```
 <VirtualHost *>
-   DocumentRoot "/Applications/MAMP/htdocs/ChefJerome/web"
-   ServerName local.chefjerome.com
+   DocumentRoot "/Applications/MAMP/htdocs/Acme/web"
+   ServerName local.acme.com
 </VirtualHost>
 
 <VirtualHost *>
-   DocumentRoot "/Applications/MAMP/htdocs/ChefJeromeCDN/"
-   ServerName localcdn.chefjerome.com
+   DocumentRoot "/Applications/MAMP/htdocs/AcmeCDN/"
+   ServerName localcdn.acme.com
 </VirtualHost>
 ```
 
@@ -86,17 +86,17 @@ framework:
             http:             [%cdn_url_dev%]
 
 // app/config/parameters.ini
-cdn_url_dev= "http://localcdn.chefjerome.com/web"
+cdn_url_dev= "http://localcdn.acme.com/web"
 ```
 
 We now need to transfer our assets to the CDN (this syntax I quite hairy, I agree): 
 
 ```
-php app/console assets:install /Applications/MAMP/htdocs/ChefJeromeCDN/web --symlink
+php app/console assets:install /Applications/MAMP/htdocs/AcmeCDN/web --symlink
 
 ```
 
-We can load `http://local.chefjerome.com` to check that the assets have correctly 
+We can load `http://local.acme.com` to check that the assets have correctly 
 been migrated.
 
 See also : [Configuration reference](http://symfony.com/doc/2.0/reference/configuration/framework.html).
@@ -119,7 +119,7 @@ assetic:
     write_to:          %cdn_path_dev%
 
 // app/config/parameters.ini
-cdn_path_dev                    = "/Applications/MAMP/htdocs/ChefJeromeCDN/web"
+cdn_path_dev                    = "/Applications/MAMP/htdocs/AcmeCDN/web"
 ```
 
 In the dev environnement, we need to specify the disk path, so the application 
@@ -144,7 +144,7 @@ First, we need to create a bucket that will hold the content that will be broadc
 
 * Log in the **AWS Console**.
 * Open the **S3** tab.
-* Click **Create new bucket** (name specification : _cdn-production-2012-03-03-18h54_).
+* Click **Create new bucket** (name example : _cdn-acme_).
 * Click **Upload** and choose a test file `test.png`, and be sure to :
  * click **Set details**, tick **Reduced Redundancy Storage**.
  * click **Set Permissions** and **Make everything public**.
@@ -154,23 +154,23 @@ First, we need to create a bucket that will hold the content that will be broadc
 * Then, go on the **CloudFront** tab.
 * Click **Create distribution**
 * Select the bucket you just created
-* Setup the CNAME to _cdn.chefjerome.com_
+* Setup the CNAME to _cdn.acme.com_
 * Review changes and click **Create distribution**
-* Wait a bit, and copy paste the domain name (ex : _dfi43z3s42tfs.cloudfront.net_) 
+* Wait a bit, and copy paste the domain name (ex : _42jhdsqhdj.cloudfront.net_) 
 to your browser, and append the test file name (ex : _test.png_). Check that you 
 see your test file.
 
 ### Setup CNAMEs
 
-You finally need to create the CNAME that will redirect _http://cdn.chefjerome.com_ 
+You finally need to create the CNAME that will redirect _http://cdn.acme.com_ 
 to our distribution.
 
 * Copy the domain name that was just generated.
 * Go to the **Route 53** tab.
-* Select the _chefjerome.com_ zone.
-* Create/update a CNAME with name _http://cdn.chefjerome.com_ and redirect it to 
+* Select the _acme.com_ zone.
+* Create/update a CNAME with name _http://cdn.acme.com_ and redirect it to 
 the CloudFront domaon Name.
-* Check that _http://cdn.chefjerome.com/test.png_ works fine.
+* Check that _http://cdn.acme.com/test.png_ works fine.
 
 References :
 
@@ -195,8 +195,8 @@ assetic:
     write_to:          %cdn_path_prod%
 
 // app/config/parameters.ini
-cdn_url_prod= "http://cdn.chefjerome.com/web"
-cdn_path_prod= "s3://cdn-production-2012-03-03-18h54"
+cdn_url_prod= "http://cdn.acme.com/web"
+cdn_path_prod= "s3://cdn-acme"
 ```
 
 NB : no need to be more accurate for the bucket path, we will use a special service 
