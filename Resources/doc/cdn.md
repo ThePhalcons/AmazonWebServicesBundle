@@ -13,6 +13,7 @@ configuration file paths are the ones that you could have under MacOS X with MAM
 ### Some helpers
 
 For testing purposes, we simulate the behavior of the production website the following way :
+
 * on development machines :
  * the URL of the project must be `http://local.chefjerome.com`
  * and all the assets will be accessible through `http://localcdn.chefjerome.com`
@@ -103,6 +104,7 @@ See also : [Configuration reference](http://symfony.com/doc/2.0/reference/config
 ### Assetic Bundle configuration
 
 We now need to configure assetic so it also use the CDN. Assetic does three things : 
+
 * he searches assets to optimize from the `read_from` directory, 
 * deals with them, 
 * and eventually writes them in the `write_to` directory. 
@@ -171,6 +173,7 @@ the CloudFront domaon Name.
 * Check that _http://cdn.chefjerome.com/test.png_ works fine.
 
 References :
+
 - [CloudFront homepage](http://aws.amazon.com/cloudfront/)
 - [Getting started tutorial](http://docs.amazonwebservices.com/AmazonCloudFront/latest/GettingStartedGuide/StartingCloudFront.html)
 - [S3 homepage](http://aws.amazon.com/s3/)
@@ -255,10 +258,12 @@ php app/console assetic:dump
 ```
 
 It works ! But there is still a couple of issues : 
+
 - As a default, none of the assets is set to be public. We need to run another script to do so.
 - Similarly, none of them is stored in Reduced Redundancy mode. Which you may want.
 
 References :
+
 - [StackOverflow question](http://stackoverflow.com/questions/8163717/dump-symfony2-assets-to-amazon-s3)
 - [Initial PR on Symfony](https://github.com/symfony/symfony/pull/108)
 - [Assetic presentation](http://www.slideshare.net/kriswallsmith/assetic-symfony-live-paris) (see slide 72)
