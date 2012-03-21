@@ -53,8 +53,7 @@ class AmazonWebServicesFactory
      */
     public function get(AmazonWebServices $aws, $serviceType)
     {
-        if (! $this->isValidServiceType($serviceType))
-        {
+        if (! $this->isValidServiceType($serviceType)) {
             throw new \RuntimeException(sprintf('Invalid Amazon Web Service Type requested [%s]', $serviceType));
         }
 
@@ -64,7 +63,7 @@ class AmazonWebServicesFactory
 
     /**
      * Determine if a requested Amazon Web Service is valid or not
-     * 
+     *
      * @param $type string The requested Amazon Web Service type
      * @return bool
      */
