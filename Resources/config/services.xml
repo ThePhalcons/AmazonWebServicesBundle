@@ -122,5 +122,9 @@
             <argument>STS</argument>
         </service>
 
+        <service id="aws_swf" class="AmazonSWF" factory-service="aws_factory" factory-method="get">
+            <argument type="service" id="aws" />
+            <argument>SWF</argument>
+        </service>
     </services>
 </container>

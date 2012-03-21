@@ -24,6 +24,7 @@ class AmazonWebServicesFactory
         'SNS',
         'SQS',
         'STS',
+        'SWF',
     );
 
     public function get(AmazonWebServices $aws, $serviceType)

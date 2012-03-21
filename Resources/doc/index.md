@@ -242,4 +242,10 @@ _Please note, at this time, thorough testing has not been completed. Because thi
     <td><a href="http://docs.amazonwebservices.com/AWSSDKforPHP/latest/#i=AmazonSTS">AmazonSTS</a></td>
     <td>Amazon Security Token Service</td>
   </tr>
+
+  <tr>
+    <td>aws_swf</td>
+    <td><a href="http://docs.amazonwebservices.com/AWSSDKforPHP/latest/#i=AmazonSWF">AmazonSWF</a></td>
+    <td>Amazon Simple Workflow</td>
+  </tr>
 </table>
