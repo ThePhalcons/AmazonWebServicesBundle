@@ -15,5 +15,5 @@ Example Use Cases
 
 2. Utilize Amazon S3 and CloudFront as a Content Delivery Network (CDN) for a Symfony 2 application. Please see the information, graciously provided by [adurieux](https://github.com/adurieux), in [`Resources/doc/cdn.md`](https://github.com/Cybernox/AmazonWebServicesBundle/blob/master/Resources/doc/cdn.md).
 
-3. Score dates with Supermodels (This features to be implemented at a later date)
+3. Score dates with Supermodels (This feature not yet implemented)
 
