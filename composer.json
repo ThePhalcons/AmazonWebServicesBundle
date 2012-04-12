@@ -1,0 +1,19 @@
+{
+    "name":         "cybernox/amazon-webservices-bundle",
+    "description":  "A Symfony2 Bundle for interfacing with Amazon Web Services (AWS)", 
+    "keywords":     ["amazon", "aws", "web services"],
+    "license":      "BSD",
+    "authors": [
+        {
+            "name":   "Mark Badolato",
+            "email":  "mbadolato@cybernox.com"
+        }
+    ],  
+    "require": {
+        "symfony/framework-bundle": "2.*"
+    },  
+    "autoload": {
+        "psr-0": { "Cybernox\\AmazonWebServicesBundle": "" }
+    },  
+    "target-dir": "Cybernox/AmazonWebServicesBundle"
+}
