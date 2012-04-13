@@ -29,6 +29,7 @@
         <service id="aws_factory" class="%aws_factory.class%"/>
 
         <service id="aws_service" class="AwsService" factory-service="aws_factory" factory-method="get" abstract="true">
+            <file>%kernel.root_dir%/../vendor/aws-sdk-for-php/sdk.class.php</file>
             <argument type="service" id="aws"/>
         </service>
 

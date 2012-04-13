@@ -1,6 +1,6 @@
 # Amazon Web Services Bundle #
 
-This is a Symfony 2 Bundle for interfacing with Amazon Web Services (AWS).
+This is a Symfony2 Bundle for interfacing with Amazon Web Services (AWS).
 
 ## AWS SDK for PHP ##
 
@@ -12,9 +12,11 @@ Once objects have been created, you have full access to the SDK. Please see the 
 
 ## Installation ##
 
-1) Add the AWS SDK for PHP library and the Amazon Web Services Bundle to your project's deps file:
+AmazonWebServicesBundle may be installed via the deps file (Symfony 2.0.x) or via Composer (2.1+)
 
-**I have not yet fully tested the 1.5 release, so if anyone finds problems, please let me know and I'll take a 1.4.7 version that can be used for now.**
+1a) Via deps file
+
+Add the AWS SDK for PHP library and the Amazon Web Services Bundle to your project's deps file:
 
     [aws-sdk-for-php]
         git=http://github.com/amazonwebservices/aws-sdk-for-php.git
@@ -22,6 +24,16 @@ Once objects have been created, you have full access to the SDK. Please see the 
     [AmazonWebServicesBundle]
         git=http://github.com/Cybernox/AmazonWebServicesBundle.git
         target=/bundles/Cybernox/AmazonWebServicesBundle
+
+1b) Via Composer
+
+Add ```"cybernox/amazon-webservices-bundle": "*"``` to the ```require``` section of your composer.json file, then run ```composer.phar install```
+
+As of right now, AWS SDK for PHP does not provide a Composer definition and is not registered with packagist.org, therefore you'll have to download it yourself:
+
+```cd /your/project/root/directory/vendor```
+
+```git clone https://github.com/amazonwebservices/aws-sdk-for-php.git```
 
 2) Add AmazonWebServicesBundle to your application kernel:
 
@@ -35,27 +47,22 @@ Once objects have been created, you have full access to the SDK. Please see the 
         );
     }
 
-3) Register the Cybernox namespace:
+3) **_If you are using Composer (1b), you may skip this step_**
+
+Register the Cybernox namespace:
 
     // app/autoload.php
     $loader->registerNamespaces(array(
         // ...
-        'Cybernox'         => __DIR__.'/../vendor/bundles',
+        'Cybernox' => __DIR__.'/../vendor/bundles',
         // ...
     ));
 
-4) Autoload the SDK by adding the following `require_once` statement to end of your `app/autoload.php` file:
+4) Run `bin/vendors install` to have Symfony download and install the packages
 
-    // app/autoload.php
+5) Set up your configuration.
 
-    // Amazon Web Services SDK
-    require_once __DIR__.'/../vendor/aws-sdk-for-php/sdk.class.php';
-
-5) Run `bin/vendors install` to have Symfony download and install the packages
-
-6) Set up your configuration.
-
-6a) First configure your parameters.ini:
+5a) First configure your parameters.ini:
 
     // app/config/parameters.ini
     [parameters]
@@ -71,9 +78,9 @@ Once objects have been created, you have full access to the SDK. Please see the 
         aws_cloudfront_keypair_id      = YOUR_CLOUDFRONT_KEYPAIR_ID
         aws_cloudfront_private_key_pem = YOUR_CLOUDFRONT_PRIVATE_KEY_PEM
 
-**Note, presently only aws_key and aws_secret are being used when constructing objects. From the quick overview I have done, I do not see any of the AWS SDK for PHP objectes using the other parameters in any of their constructors.  Setting them is fine, but it won't do anything. My todo list includes researching how/where they are used in the SDK, and methods for using them shall be provided at that time.**
+**Note, presently only aws_key and aws_secret are being used when constructing objects. Setting them is fine, but it won't do anything.**
 
-6b) Set up your application configuration:
+5b) Set up your application configuration:
 
     // app/config/config.yml
     # Amazon Web Services Configuration
@@ -90,7 +97,9 @@ Once objects have been created, you have full access to the SDK. Please see the 
         enable_extensions:          false
         certificate_authority:      false
 
-**Note, as in 6a) only the key and secret are presently being used, so it is safe to omit the rest if you wish. You're also welcome to skip setting the configurations in parameters.ini (6a) and set the values directly in config.yml, however, I'm following the example that Sensio used for Symfony with regards to database setup, and keeping the actual private configuration values in parameters.ini and utilizing them in config.yml.**
+**Note, as in 5a) above, only the key and secret are presently being used, so it is safe to omit the rest if you wish.**
+
+**You're welcome to skip setting the configurations in parameters.ini (5a) and set the values directly in config.yml, however, the setup shown here is following the example that Sensio used for Symfony with regards to database setup, and keeping the actual private configuration values in parameters.ini and utilizing them in config.yml.**
 
 ## Usage ##
 

@@ -3,7 +3,7 @@ Amazon Web Services Bundle
 
 Overview
 --------
-This is a Symfony 2 Bundle for interfacing with Amazon Web Services (AWS).
+This is a Symfony2 Bundle for interfacing with Amazon Web Services (AWS).
 
 This bundle uses the [AWS SDK for PHP](http://github.com/amazonwebservices/aws-sdk-for-php) by loading the SDK, and enabling you to instantiate the SDK's various web service objects, passing them back to you for direct use in your Symfony2 application..
 
