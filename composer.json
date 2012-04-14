@@ -11,7 +11,7 @@
     ],  
     "require": {
         "symfony/framework-bundle": "2.*",
-        "amazonwebservices/aws-sdk-for-php": "master"
+        "amazonwebservices/aws-sdk-for-php": "dev-master"
     },  
     "repositories": [
         {
