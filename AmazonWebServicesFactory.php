@@ -24,6 +24,7 @@ class AmazonWebServicesFactory
         'AS',
         'CloudFormation',
         'CloudFront',
+        'CloudSearch',
         'CloudWatch',
         'DynamoDB',
         'EC2',

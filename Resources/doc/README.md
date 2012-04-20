@@ -147,19 +147,25 @@ _Please note, at this time, thorough testing has not been completed. Because thi
   <tr>
     <td>aws_cloud_formation</td>
     <td><a href="http://docs.amazonwebservices.com/AWSSDKforPHP/latest/#i=AmazonCloudFormation">AmazonCloudFormation</a></td>
-    <td>Amazon Cloud Formation</td>
+    <td>Amazon CloudFormation</td>
   </tr>
 
   <tr>
     <td>aws_cloud_front</td>
     <td><a href="http://docs.amazonwebservices.com/AWSSDKforPHP/latest/#i=AmazonCloudFront">AmazonCloudFront</a></td>
-    <td>Amazon Cloud Front</td>
+    <td>Amazon CloudFront</td>
+  </tr>
+
+  <tr>
+    <td>aws_cloud_search</td>
+    <td><a href="http://docs.amazonwebservices.com/AWSSDKforPHP/latest/#i=AmazonCloudSearch">AmazonCloudSearch</a></td>
+    <td>Amazon CloudSearch</td>
   </tr>
 
   <tr>
     <td>aws_cloud_watch</td>
     <td><a href="http://docs.amazonwebservices.com/AWSSDKforPHP/latest/#i=AmazonCloudWatch">AmazonCloudWatch</a></td>
-    <td>Amazon Cloud Watch</td>
+    <td>Amazon CloudWatch</td>
   </tr>
 
   <tr>

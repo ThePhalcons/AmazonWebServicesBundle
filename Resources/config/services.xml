@@ -45,6 +45,10 @@
             <argument>CloudFront</argument>
         </service>
 
+        <service id="aws_cloud_search" class="AmazonCloudSearch" parent="aws_service">
+            <argument>CloudSearch</argument>
+        </service>
+
         <service id="aws_cloud_watch" class="AmazonCloudWatch" parent="aws_service">
             <argument>CloudWatch</argument>
         </service>
