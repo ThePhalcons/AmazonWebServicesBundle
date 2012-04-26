@@ -58,6 +58,8 @@ Now run ```composer.phar install``` if this is a new installation, or ```compose
 2) Add AmazonWebServicesBundle to your application kernel:
 
 ```php
+<?php
+
 // app/AppKernel.php
 public function registerBundles()
 {
