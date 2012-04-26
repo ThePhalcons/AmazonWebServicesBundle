@@ -76,6 +76,8 @@ public function registerBundles()
 Register the Cybernox namespace:
 
 ```php
+<?php
+
 // app/autoload.php
 $loader->registerNamespaces(array(
     // ...
@@ -140,6 +142,8 @@ Once installed, you simply need to request the appropriate service for the Amazo
 In this example, we get an AmazonSQS object from the AWS SDK for PHP library by requesting the ```aws_sqs``` service. We then use that object to retrieve a message from an existing Amazon SQS queue.
 
 ```php
+<?php
+
 // src/Acme/DemoBundle/Controller/YourController.php
 public function someAction()
 {
