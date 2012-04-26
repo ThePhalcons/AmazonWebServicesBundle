@@ -10,7 +10,8 @@
         }
     ],  
     "require": {
-        "symfony/framework-bundle": "2.*"
+        "symfony/framework-bundle": "2.*",
+        "aws-sdk-for-php": "1.5.4",
     },
     "autoload": {
         "psr-0": { "Cybernox\\AmazonWebServicesBundle": "" }
