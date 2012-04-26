@@ -29,7 +29,9 @@ Add the AWS SDK for PHP library and the Amazon Web Services Bundle to your proje
 
 Go to the ```require``` section of your composer.json file and add
 
- ```"cybernox/amazon-webservices-bundle": "*"``` 
+```json
+"cybernox/amazon-webservices-bundle": ">=1.5.4"
+```
 
 to the section, along with other packages you require.  Then create a new section in the composer.json file consisting of:
 
