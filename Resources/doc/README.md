@@ -27,13 +27,29 @@ Add the AWS SDK for PHP library and the Amazon Web Services Bundle to your proje
 
 1b) Via Composer
 
-Add ```"cybernox/amazon-webservices-bundle": "*"``` to the ```require``` section of your composer.json file, then run ```composer.phar install```
+Go to the ```require``` section of your composer.json file and add
 
-As of right now, AWS SDK for PHP does not provide a Composer definition and is not registered with packagist.org, therefore you'll have to download it yourself:
+ ```"cybernox/amazon-webservices-bundle": "*"``` 
 
-```cd /your/project/root/directory/vendor```
+to the section, along with other packages you require.  Then create a new section in the composer.json file consisting of:
 
-```git clone https://github.com/amazonwebservices/aws-sdk-for-php.git```
+```json
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "aws-sdk-for-php",
+                "version": "1.5.4",
+                "dist": {
+                    "url": "https://github.com/amazonwebservices/aws-sdk-for-php/zipball/master",
+                    "type": "zip"
+                }
+            }
+        }
+    ],
+```
+
+Now run ```composer.phar install``` if this is a new installation, or ```composer.phar update``` if you are updating an existing installation.
 
 2) Add AmazonWebServicesBundle to your application kernel:
 
