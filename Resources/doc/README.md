@@ -110,11 +110,9 @@ $loader->registerNamespaces(array(
 
 **Note, presently only aws_key and aws_secret are being used when constructing objects. Setting them is fine, but it won't do anything.**
 
-5b) Set up your application configuration:
+5b) Set up your application configuration in ```app/config/config.yml```:
 
 ```yml
-// app/config/config.yml
-# Amazon Web Services Configuration
 cybernox_amazon_web_services:
     key:                        %aws_key%
     secret:                     %aws_secret%
