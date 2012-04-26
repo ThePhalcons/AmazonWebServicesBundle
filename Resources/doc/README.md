@@ -18,12 +18,14 @@ AmazonWebServicesBundle may be installed via the deps file (Symfony 2.0.x) or vi
 
 Add the AWS SDK for PHP library and the Amazon Web Services Bundle to your project's deps file:
 
-    [aws-sdk-for-php]
-        git=http://github.com/amazonwebservices/aws-sdk-for-php.git
+```bash
+[aws-sdk-for-php]
+    git=http://github.com/amazonwebservices/aws-sdk-for-php.git
 
-    [AmazonWebServicesBundle]
-        git=http://github.com/Cybernox/AmazonWebServicesBundle.git
-        target=/bundles/Cybernox/AmazonWebServicesBundle
+[AmazonWebServicesBundle]
+    git=http://github.com/Cybernox/AmazonWebServicesBundle.git
+    target=/bundles/Cybernox/AmazonWebServicesBundle
+```
 
 1b) Via Composer
 
@@ -55,26 +57,30 @@ Now run ```composer.phar install``` if this is a new installation, or ```compose
 
 2) Add AmazonWebServicesBundle to your application kernel:
 
-    // app/AppKernel.php
-    public function registerBundles()
-    {
-        return array(
-            // ...
-            new Cybernox\AmazonWebServicesBundle\CybernoxAmazonWebServicesBundle(),
-            // ...
-        );
-    }
+```php
+// app/AppKernel.php
+public function registerBundles()
+{
+    return array(
+        // ...
+        new Cybernox\AmazonWebServicesBundle\CybernoxAmazonWebServicesBundle(),
+        // ...
+    );
+}
+```
 
 3) **_If you are using Composer (1b), you may skip this step_**
 
 Register the Cybernox namespace:
 
-    // app/autoload.php
-    $loader->registerNamespaces(array(
-        // ...
-        'Cybernox' => __DIR__.'/../vendor/bundles',
-        // ...
-    ));
+```php
+// app/autoload.php
+$loader->registerNamespaces(array(
+    // ...
+    'Cybernox' => __DIR__.'/../vendor/bundles',
+    // ...
+));
+```
 
 4) Run `bin/vendors install` to have Symfony download and install the packages
 
@@ -82,38 +88,42 @@ Register the Cybernox namespace:
 
 5a) First configure your parameters.ini:
 
-    // app/config/parameters.ini
-    [parameters]
-        ...
+```ini
+// app/config/parameters.ini
+[parameters]
+    ...
 
-        ; Amazon Web Services Configuration. Found in the AWS Security Credentials.
-        aws_key                        = YOUR_KEY
-        aws_secret                     = YOUR_SECRET_KEY
-        aws_account_id                 = YOUR_ACCOUNT_ID
-        aws_canonical_id               = YOUR_CONONICAL_ID
-        aws_canonical_name             = YOUR_CONONICAL_NAME
-        aws_mfa_serial                 = YOUR_MFA_SERIAL
-        aws_cloudfront_keypair_id      = YOUR_CLOUDFRONT_KEYPAIR_ID
-        aws_cloudfront_private_key_pem = YOUR_CLOUDFRONT_PRIVATE_KEY_PEM
+    ; Amazon Web Services Configuration. Found in the AWS Security Credentials.
+    aws_key                        = YOUR_KEY
+    aws_secret                     = YOUR_SECRET_KEY
+    aws_account_id                 = YOUR_ACCOUNT_ID
+    aws_canonical_id               = YOUR_CONONICAL_ID
+    aws_canonical_name             = YOUR_CONONICAL_NAME
+    aws_mfa_serial                 = YOUR_MFA_SERIAL
+    aws_cloudfront_keypair_id      = YOUR_CLOUDFRONT_KEYPAIR_ID
+    aws_cloudfront_private_key_pem = YOUR_CLOUDFRONT_PRIVATE_KEY_PEM
+```
 
 **Note, presently only aws_key and aws_secret are being used when constructing objects. Setting them is fine, but it won't do anything.**
 
 5b) Set up your application configuration:
 
-    // app/config/config.yml
-    # Amazon Web Services Configuration
-    cybernox_amazon_web_services:
-        key:                        %aws_key%
-        secret:                     %aws_secret%
-        account_id:                 %aws_account_id%
-        canonical_id:               %aws_canonical_id%
-        canonical_name:             %aws_canonical_name%
-        mfa_serial:                 %aws_mfa_serial%
-        cloudfront_keypair_id:      %aws_cloudfront_keypair_id%
-        cloudfront_private_key_pem: %aws_cloudfront_private_key_pem%
-        default_cache_config:       apc
-        enable_extensions:          false
-        certificate_authority:      false
+```yml
+// app/config/config.yml
+# Amazon Web Services Configuration
+cybernox_amazon_web_services:
+    key:                        %aws_key%
+    secret:                     %aws_secret%
+    account_id:                 %aws_account_id%
+    canonical_id:               %aws_canonical_id%
+    canonical_name:             %aws_canonical_name%
+    mfa_serial:                 %aws_mfa_serial%
+    cloudfront_keypair_id:      %aws_cloudfront_keypair_id%
+    cloudfront_private_key_pem: %aws_cloudfront_private_key_pem%
+    default_cache_config:       apc
+    enable_extensions:          false
+    certificate_authority:      false
+```
 
 **Note, as in 5a) above, only the key and secret are presently being used, so it is safe to omit the rest if you wish.**
 
@@ -125,22 +135,21 @@ Once installed, you simply need to request the appropriate service for the Amazo
 
 **Please see the [AWS SDK for PHP documentation](http://docs.amazonwebservices.com/AWSSDKforPHP/latest/) for a list of each service's API calls.**
 
-In this example, we get an AmazonSQS object from the AWS SDK for PHP library by requesting the `aws_sqs` service. We then use that object to retrieve a message from an existing Amazon SQS queue.
+In this example, we get an AmazonSQS object from the AWS SDK for PHP library by requesting the ```aws_sqs``` service. We then use that object to retrieve a message from an existing Amazon SQS queue.
 
 ```php
+// src/Acme/DemoBundle/Controller/YourController.php
+public function someAction()
+{
+    // Get a AmazonSQS object
+    $sqs = $this->container->get('aws_sqs');
 
-    // src/Acme/DemoBundle/Controller/YourController.php
-    public function someAction()
-    {
-        // Get a AmazonSQS object
-        $sqs = $this->container->get('aws_sqs');
+    // Get a message from an existing queue
+    $response = $sqs->receive_message($queueUrl);
 
-        // Get a message from an existing queue
-        $response = $sqs->receive_message($queueUrl);
-
-        // Do stuff with the received message response object
-        // ...
-    }
+    // Do stuff with the received message response object
+    // ...
+}
 ```
 
 ### Available Services ###
