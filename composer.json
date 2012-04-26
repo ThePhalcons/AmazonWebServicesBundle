@@ -10,22 +10,8 @@
         }
     ],  
     "require": {
-        "symfony/framework-bundle": "2.*",
-        "aws-sdk-for-php": "1.5.4"
+        "symfony/framework-bundle": "2.*"
     },
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "aws-sdk-for-php",
-                "version": "1.5.4",
-                "dist": {
-                    "url": "https://github.com/amazonwebservices/aws-sdk-for-php/zipball/master",
-                    "type": "zip"
-                }
-            }
-        }
-    ],
     "autoload": {
         "psr-0": { "Cybernox\\AmazonWebServicesBundle": "" }
     },  
