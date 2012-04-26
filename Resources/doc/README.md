@@ -43,10 +43,11 @@ to the section, along with other packages you require.  Then create a new sectio
             "type": "package",
             "package": {
                 "name": "aws-sdk-for-php",
-                "version": "1.5.4",
-                "dist": {
-                    "url": "https://github.com/amazonwebservices/aws-sdk-for-php/zipball/master",
-                    "type": "zip"
+                "version": "master",
+                "source": {
+                    "url": "https://github.com/amazonwebservices/aws-sdk-for-php.git",
+                    "type": "git",
+                    "reference": "master"
                 }
             }
         }
