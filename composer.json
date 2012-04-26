@@ -11,17 +11,18 @@
     ],  
     "require": {
         "symfony/framework-bundle": "2.*",
-        "aws-sdk-for-php": "1.5.4"
+        "aws-sdk-for-php": "*"
     },
     "repositories": [
         {
             "type": "package",
             "package": {
                 "name": "aws-sdk-for-php",
-                "version": "1.5.4",
-                "dist": {
-                    "url": "https://github.com/amazonwebservices/aws-sdk-for-php/zipball/master",
-                    "type": "zip"
+                "version": "master",
+                "source": {
+                    "url": "https://github.com/amazonwebservices/aws-sdk-for-php.git",
+                    "type": "git",
+                    "reference": "master"
                 }
             }
         }
