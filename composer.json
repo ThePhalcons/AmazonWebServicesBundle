@@ -17,7 +17,7 @@
         {
             "type": "package",
             "package": {
-                "name": "aws-sdk-for-php",
+                "name": "amazonwebservices/aws-sdk-for-php",
                 "version": "master",
                 "source": {
                     "url": "https://github.com/amazonwebservices/aws-sdk-for-php.git",
