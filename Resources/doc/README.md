@@ -35,26 +35,7 @@ Go to the ```require``` section of your composer.json file and add
 "cybernox/amazon-webservices-bundle": ">=1.5.4"
 ```
 
-to the section, along with other packages you require.  Then create a new section in the composer.json file consisting of:
-
-```json
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "aws-sdk-for-php",
-                "version": "master",
-                "source": {
-                    "url": "https://github.com/amazonwebservices/aws-sdk-for-php.git",
-                    "type": "git",
-                    "reference": "master"
-                }
-            }
-        }
-    ],
-```
-
-Now run ```composer.phar install``` if this is a new installation, or ```composer.phar update``` if you are updating an existing installation.
+to the section, along with other packages you require.  Now run ```composer.phar install``` if this is a new installation, or ```composer.phar update``` if you are updating an existing installation.
 
 2) Add AmazonWebServicesBundle to your application kernel:
 
