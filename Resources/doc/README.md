@@ -21,6 +21,7 @@ Add the AWS SDK for PHP library and the Amazon Web Services Bundle to your proje
 ```bash
 [aws-sdk-for-php]
     git=http://github.com/amazonwebservices/aws-sdk-for-php.git
+    target=/amazonwebservices/aws-sdk-for-php
 
 [AmazonWebServicesBundle]
     git=http://github.com/Cybernox/AmazonWebServicesBundle.git
