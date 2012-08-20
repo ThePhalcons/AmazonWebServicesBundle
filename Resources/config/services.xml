@@ -7,6 +7,8 @@
     <parameters>
         <parameter key="aws.class">Cybernox\AmazonWebServicesBundle\AmazonWebServices</parameter>
         <parameter key="aws_factory.class">Cybernox\AmazonWebServicesBundle\AmazonWebServicesFactory</parameter>
+
+        <parameter key="cybernox_amazon_web_services.sdk_path">%kernel.root_dir%/../vendor/amazonwebservices/aws-sdk-for-php/sdk.class.php</parameter>
     </parameters>
 
     <services>
@@ -29,7 +31,7 @@
         <service id="aws_factory" class="%aws_factory.class%"/>
 
         <service id="aws_service" class="AwsService" factory-service="aws_factory" factory-method="get" abstract="true">
-            <file>%kernel.root_dir%/../vendor/amazonwebservices/aws-sdk-for-php/sdk.class.php</file>
+            <file>%cybernox_amazon_web_services.sdk_path%</file>
             <argument type="service" id="aws"/>
         </service>
 

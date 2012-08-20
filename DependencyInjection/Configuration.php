@@ -44,6 +44,7 @@ class Configuration implements ConfigurationInterface
                     ->prototype('scalar')
                     ->end()
                 ->end()
+                ->scalarNode('sdk_path')->defaultValue(null)->end()
                 ->booleanNode('certificate_authority')->defaultFalse()->end()
                 ->booleanNode('disable_auto_config')->defaultFalse()->end()
             ->end();
