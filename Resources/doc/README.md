@@ -92,9 +92,11 @@ $loader->registerNamespaces(array(
 ```
 
 **Note, presently only aws_key and aws_secret are being used when constructing objects. Setting them is fine, but it won't do anything.**
-**aws_cloudfront_pem should be contents of your pem file, including startline and endline. To work with multiline add double quotes. Example: **
+
+**aws_cloudfront_pem should be contents of your pem file, including startline and endline. To work with multiline add double quotes. Example:**
+
 ```ini
-    aws_cloudfront_private_key_pem = "-----BEGIN RSA PRIVATE KEY-----
+  aws_cloudfront_private_key_pem = "-----BEGIN RSA PRIVATE KEY-----
 *private key goes here*
 -----END RSA PRIVATE KEY-----"
 ```
