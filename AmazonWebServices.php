@@ -75,23 +75,23 @@ class AmazonWebServices
     }
 
     /**
-     * Get the cloudFrontKeypairId
+     * Get the cloudFrontKeypair
      *
      * @return string The Cloudfront keypair id provided via the bundle configuration
      */
-    public function cloudfrontKeypairId()
+    public function cloudfrontKeypair()
     {
-        return $this->parameters['cloudfront_keypair_id'];
+        return $this->parameters['cloudfront_keypair'];
     }
 
     /**
-     * Get the cloudfrontPrivateKeyPem
+     * Get the cloudfrontPem
      *
      * @return string The Cloudfront private key pem provided via the bundle configuration
      */
     public function cloudfrontPrivateKeyPem()
     {
-        return $this->parameters['cloudfront_private_key_pem'];
+        return $this->parameters['cloudfront_pem'];
     }
 
     /**
