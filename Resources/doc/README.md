@@ -87,11 +87,19 @@ $loader->registerNamespaces(array(
     aws_canonical_id               = YOUR_CONONICAL_ID
     aws_canonical_name             = YOUR_CONONICAL_NAME
     aws_mfa_serial                 = YOUR_MFA_SERIAL
-    aws_cloudfront_keypair_id      = YOUR_CLOUDFRONT_KEYPAIR_ID
-    aws_cloudfront_private_key_pem = YOUR_CLOUDFRONT_PRIVATE_KEY_PEM
+    aws_cloudfront_keypair         = YOUR_CLOUDFRONT_KEYPAIR_ID
+    aws_cloudfront_pem             = YOUR_CLOUDFRONT_PRIVATE_KEY_PEM
 ```
 
 **Note, presently only aws_key and aws_secret are being used when constructing objects. Setting them is fine, but it won't do anything.**
+
+**aws_cloudfront_pem should be contents of your pem file, including startline and endline. To work with multiline add double quotes. Example:**
+
+```ini
+  aws_cloudfront_private_key_pem = "-----BEGIN RSA PRIVATE KEY-----
+*private key goes here*
+-----END RSA PRIVATE KEY-----"
+```
 
 5b) Set up your application configuration:
 
@@ -105,8 +113,8 @@ cybernox_amazon_web_services:
     canonical_id:               %aws_canonical_id%
     canonical_name:             %aws_canonical_name%
     mfa_serial:                 %aws_mfa_serial%
-    cloudfront_keypair_id:      %aws_cloudfront_keypair_id%
-    cloudfront_private_key_pem: %aws_cloudfront_private_key_pem%
+    cloudfront_keypair:      %aws_cloudfront_keypair%
+    cloudfront_pem: %aws_cloudfront_pem%
     default_cache_config:       apc
     enable_extensions:          false
     certificate_authority:      false
