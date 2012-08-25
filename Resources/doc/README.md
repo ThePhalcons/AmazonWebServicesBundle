@@ -113,8 +113,8 @@ cybernox_amazon_web_services:
     canonical_id:               %aws_canonical_id%
     canonical_name:             %aws_canonical_name%
     mfa_serial:                 %aws_mfa_serial%
-    cloudfront_keypair:      %aws_cloudfront_keypair%
-    cloudfront_pem: %aws_cloudfront_pem%
+    cloudfront_keypair:         %aws_cloudfront_keypair%
+    cloudfront_pem:             %aws_cloudfront_pem%
     default_cache_config:       apc
     enable_extensions:          false
     certificate_authority:      false
