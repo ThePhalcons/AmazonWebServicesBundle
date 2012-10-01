@@ -13,10 +13,20 @@
 namespace Cybernox\AmazonWebServicesBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Cybernox\AmazonWebServicesBundle\StreamWrapper\S3StreamWrapper;
 
 /**
  * AmazonWebServicesBundle Main Bundle Class
  */
 class CybernoxAmazonWebServicesBundle extends Bundle
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function boot()
+    {
+        if (in_array('s3', $this->container->getParameter('cybernox_amazon_web_services.enable_extensions'))) {
+            S3StreamWrapper::register($this->container->get('aws_s3'), 's3');
+        }
+    }
 }
