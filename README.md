@@ -9,6 +9,10 @@ This bundle uses the [AWS SDK for PHP](http://github.com/amazonwebservices/aws-s
 
 For installation, configuration, and usage details, please see [`Resources/doc/README.md`](https://github.com/Cybernox/AmazonWebServicesBundle/blob/master/Resources/doc/README.md)
 
+Changelog
+---------
+PR#15 submitted by @Fran6co requires a type chnage to the enable_extensions parameter in config.yml. See step 5b of [Resources/doc/README.md`](https://github.com/Cybernox/AmazonWebServicesBundle/blob/master/Resources/doc/README.md) for the new format.
+
 Example Use Cases
 -----------------
 1. Connect to, and manipulate, any of the available Amazon Web Services, such as EC2, SQS, CloudFront, S3, etc.
