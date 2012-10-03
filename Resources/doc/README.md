@@ -116,7 +116,7 @@ cybernox_amazon_web_services:
     cloudfront_keypair:         %aws_cloudfront_keypair%
     cloudfront_pem:             %aws_cloudfront_pem%
     default_cache_config:       apc
-    enable_extensions:          false
+    enable_extensions:          [] 
     certificate_authority:      false
 ```
 
