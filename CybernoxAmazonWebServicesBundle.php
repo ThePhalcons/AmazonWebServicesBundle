@@ -26,10 +26,6 @@ class CybernoxAmazonWebServicesBundle extends Bundle
     public function boot()
     {
         if (in_array('s3', $this->container->getParameter('cybernox_amazon_web_services.enable_extensions'))) {
-            if(in_array('s3', stream_get_wrappers())) {
-                stream_wrapper_unregister('s3');
-            }
-            
             S3StreamWrapper::register($this->container->get('aws_s3'), 's3');
         }
     }
