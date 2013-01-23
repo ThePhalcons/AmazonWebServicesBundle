@@ -45,6 +45,7 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
                 ->booleanNode('certificate_authority')->defaultFalse()->end()
+                ->booleanNode('disable_auto_config')->defaultFalse()->end()
             ->end();
 
         return $treeBuilder;
