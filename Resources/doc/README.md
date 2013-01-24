@@ -118,9 +118,12 @@ cybernox_amazon_web_services:
     default_cache_config:       apc
     enable_extensions:          [] 
     certificate_authority:      false
+    disable_auto_config:        false
 ```
 
 **Note, as in 5a) above, only the key and secret are presently being used, so it is safe to omit the rest if you wish.**
+
+**The AWS SDK by default looks for configuration files in various standard locations.  If they're not found, error messages are emitted to the web server's log, though performance is not impacted.  If you do not use the auto-configuration and wish to suppress the error messages, enable the disable_auto_config option.**
 
 **You're welcome to skip setting the configurations in parameters.ini (5a) and set the values directly in config.yml, however, the setup shown here is following the example that Sensio used for Symfony with regards to database setup, and keeping the actual private configuration values in parameters.ini and utilizing them in config.yml.**
 
