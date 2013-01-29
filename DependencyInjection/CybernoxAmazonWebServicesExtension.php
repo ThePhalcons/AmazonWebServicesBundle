@@ -38,7 +38,7 @@ class CybernoxAmazonWebServicesExtension extends Extension
         }
 
         if ($config['disable_auto_config']) {
-            define('AWS_DISABLE_CONFIG_AUTO_DISCOVERY', TRUE);
+            @define('AWS_DISABLE_CONFIG_AUTO_DISCOVERY', TRUE);
         }
     }
 }
