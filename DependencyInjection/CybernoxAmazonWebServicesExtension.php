@@ -37,8 +37,8 @@ class CybernoxAmazonWebServicesExtension extends Extension
             $container->setParameter('cybernox_amazon_web_services.' . $key, $value);
         }
 
-        if ($config['disable_auto_config']) {
-            @define('AWS_DISABLE_CONFIG_AUTO_DISCOVERY', TRUE);
+        if ($config['disable_auto_config'] && (! defined('AWS_DISABLE_CONFIG_AUTO_DISCOVERY'))) {
+            define('AWS_DISABLE_CONFIG_AUTO_DISCOVERY', TRUE);
         }
     }
 }
