@@ -22,7 +22,7 @@ class AmazonWebServices
     /**
      * Constructor
      *
-     * @array array $parameters An array of configuration options
+     * @param array $parameters An array of configuration options
      */
     public function __construct(array $parameters)
     {
