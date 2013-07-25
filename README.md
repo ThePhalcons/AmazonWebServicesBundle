@@ -1,6 +1,9 @@
 Amazon Web Services Bundle
 ==========================
 
+[![Latest Stable Version](https://poser.pugx.org/cybernox/amazon-webservices-bundle/v/stable.png)](https://packagist.org/packages/cybernox/amazon-webservices-bundle)
+[![Total Downloads](https://poser.pugx.org/cybernox/amazon-webservices-bundle/downloads.png)](https://packagist.org/packages/cybernox/amazon-webservices-bundle)
+
 Overview
 --------
 This is a Symfony2 Bundle for interfacing with Amazon Web Services (AWS).
