@@ -8,7 +8,7 @@
         <parameter key="aws.class">Cybernox\AmazonWebServicesBundle\AmazonWebServices</parameter>
         <parameter key="aws_factory.class">Cybernox\AmazonWebServicesBundle\AmazonWebServicesFactory</parameter>
 
-        <parameter key="cybernox_amazon_web_services.sdk_path">%kernel.root_dir%/../vendor/amazonwebservices/aws-sdk-for-php/sdk.class.php</parameter>
+        <parameter key="cybernox_amazon_web_services.sdk_path" />
     </parameters>
 
     <services>
