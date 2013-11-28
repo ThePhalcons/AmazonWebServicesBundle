@@ -220,16 +220,14 @@ Pittifully, simply installing the Bundle is not enough : at no point we load the
 S3 service when calling the Assetic command. We need to force the registration 
 of the StreamWrapper some way.
 
-This is precisely why `boot()` methods are made for : add the following function 
-to one of the '*Bundle.php` files :
+You can register the stream wrapper when the Kernel boot by editing your AppKernel.php
+Simply copy paste that code in it:
 
 ```
 public function boot()
-{        
-    require_once __DIR__.'/../../../vendor/aws-sdk-for-php/extensions/s3streamwrapper.class.php';
-    $s3 = $this->container
-               ->get('aws_s3')
-               ->register_stream_wrapper();
+{
+     \Aws\S3\S3Client::factory()->registerStreamWrapper();
+     return parent::boot();
 }
 ```
 
