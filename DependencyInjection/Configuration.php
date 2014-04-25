@@ -44,6 +44,7 @@ class Configuration implements ConfigurationInterface
                     ->prototype('scalar')
                     ->end()
                 ->end()
+                ->scalarNode('sdk_path')->defaultValue('%kernel.root_dir%/../vendor/amazonwebservices/aws-sdk-for-php/sdk.class.php')->end()
                 ->booleanNode('certificate_authority')->defaultFalse()->end()
                 ->booleanNode('disable_auto_config')->defaultFalse()->end()
             ->end();
