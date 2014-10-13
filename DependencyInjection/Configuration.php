@@ -47,6 +47,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('sdk_path')->defaultValue('%kernel.root_dir%/../vendor/amazonwebservices/aws-sdk-for-php/sdk.class.php')->end()
                 ->booleanNode('certificate_authority')->defaultFalse()->end()
                 ->booleanNode('disable_auto_config')->defaultFalse()->end()
+                ->scalarNode('hostname')->defaultValue(null)->end()
             ->end();
 
         return $treeBuilder;

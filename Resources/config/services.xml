@@ -93,6 +93,9 @@
 
         <service id="aws_s3" class="AmazonS3" parent="aws_service">
             <argument>S3</argument>
+            <call method="set_hostname">
+                <argument>%cybernox_amazon_web_services.hostname%</argument>
+            </call>
         </service>
 
         <service id="aws_sdb" class="AmazonSDB" parent="aws_service">
