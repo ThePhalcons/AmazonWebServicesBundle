@@ -1,6 +1,10 @@
 Amazon Web Services Bundle
 ==========================
 
+Notice
+======
+This bundle is no longer being maintained. It is still usable with the 1.x version of AWS SDK, however no changes or bugfixes are going in. If someone is interested in taking over this bundle, please contact me and I'd be happy to transfer it to you.
+
 [![Latest Stable Version](https://poser.pugx.org/cybernox/amazon-webservices-bundle/v/stable.png)](https://packagist.org/packages/cybernox/amazon-webservices-bundle)
 [![Total Downloads](https://poser.pugx.org/cybernox/amazon-webservices-bundle/downloads.png)](https://packagist.org/packages/cybernox/amazon-webservices-bundle)
 
