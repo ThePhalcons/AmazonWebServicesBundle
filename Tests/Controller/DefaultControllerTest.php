@@ -1,6 +1,6 @@
 <?php
 
-namespace Cybernox\AmazonWebServicesBundle\Tests\Controller;
+namespace AmazonWebServicesBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

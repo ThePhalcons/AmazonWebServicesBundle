@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cybernox\AmazonWebServicesBundle;
+namespace AmazonWebServicesBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Cybernox\AmazonWebServicesBundle\StreamWrapper\S3StreamWrapper;
