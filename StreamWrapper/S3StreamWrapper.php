@@ -1,6 +1,6 @@
 <?php
 
-namespace Cybernox\AmazonWebServicesBundle\StreamWrapper;
+namespace AmazonWebServicesBundle\StreamWrapper;
 
 use \S3StreamWrapper as BaseS3StreamWrapper;
 use \CFMimeTypes;

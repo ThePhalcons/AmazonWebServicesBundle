@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cybernox\AmazonWebServicesBundle;
+namespace AmazonWebServicesBundle;
 
 /**
  * AmazonWebServicesBundle Main Service class

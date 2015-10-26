@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cybernox\AmazonWebServicesBundle\DependencyInjection;
+namespace AmazonWebServicesBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
