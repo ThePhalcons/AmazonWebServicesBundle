@@ -1,20 +1,25 @@
 {
-    "name":         "cybernox/amazon-webservices-bundle",
-    "description":  "A Symfony2 Bundle for interfacing with Amazon Web Services (AWS)", 
-    "keywords":     ["amazon", "aws", "web services"],
-    "license":      "BSD",
+    "name":         "thephalcons/amazon-webservices-bundle",
+    "description":  "A Symfony2 Bundle for interfacing with Amazon Web Services (AWS)",
+    "keywords":     ["amazon", "aws", "web services", "aws-sdk-php"],
+    "license":      "MIT",
     "authors": [
+        {
+          "name":   "El Mehdi Mouddene",
+          "email":  "mouddene@gmail.com"
+        },
         {
             "name":   "Mark Badolato",
             "email":  "mbadolato@cybernox.com"
         }
-    ],  
+    ],
     "require": {
-        "symfony/framework-bundle": "2.*",
-        "amazonwebservices/aws-sdk-for-php": "*"
+        "php": ">=5.5",
+        "symfony/framework-bundle": "~2.3",
+        "aws/aws-sdk-php": "*"
     },
     "autoload": {
-        "psr-0": { "Cybernox\\AmazonWebServicesBundle": "" }
-    },  
-    "target-dir": "Cybernox/AmazonWebServicesBundle"
+        "psr-0": { "ThePhalcons\\AmazonWebServicesBundle": "" }
+    },
+    "target-dir": "ThePhalcons/AmazonWebServicesBundle"
 }
