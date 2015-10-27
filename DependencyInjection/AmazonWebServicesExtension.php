@@ -30,14 +30,31 @@ class CybernoxAmazonWebServicesExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.xml');
+        //not used any more services will be defined during configuration loading
+//        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+//        $loader->load('services.xml');
 
-        foreach ($config as $key => $value) {
-            $container->setParameter('cybernox_amazon_web_services.' . $key, $value);
-        }
 
-        $factory = $container->getDefinition('aws_factory');
-        $factory->addArgument($config);
+        //TODO: add new parameters structure
+//        foreach ($config as $key => $value) {
+//            $container->setParameter('amazon_web_services.' . $key, $value);
+//        }
+//
+//        $factory = $container->getDefinition('aws_factory');
+//        $factory->addArgument($config);
+    }
+
+    private function addFactoryDefinition(){
+        //TODO: define config and factory services
+    }
+
+    /**
+     * Inject service definition based on provided configuration
+     * @param ContainerBuilder $container
+     * @param $serviceType
+     */
+    private function addAwsSerivceDefinition(ContainerBuilder $container, $serviceType)
+    {
+        //TODO : implement aws services injection
     }
 }
