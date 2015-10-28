@@ -26,7 +26,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder    = new TreeBuilder();
-        $rootNode       = $treeBuilder->root('cybernox_amazon_web_services');
+        $rootNode       = $treeBuilder->root('amazon_web_services');
 
         $rootNode
             ->children()
