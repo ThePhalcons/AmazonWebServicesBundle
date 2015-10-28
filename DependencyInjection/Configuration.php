@@ -14,6 +14,7 @@ namespace AmazonWebServicesBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 /**
  * AmazonWebServicesBundle Configuration
@@ -28,27 +29,67 @@ class Configuration implements ConfigurationInterface
         $treeBuilder    = new TreeBuilder();
         $rootNode       = $treeBuilder->root('amazon_web_services');
 
-        $rootNode
-            ->children()
-                ->scalarNode('key')->isRequired()->end()
-                ->scalarNode('secret')->isRequired()->end()
-                ->scalarNode('account_id')->defaultValue(null)->end()
-                ->scalarNode('canonical_id')->defaultValue(null)->end()
-                ->scalarNode('canonical_name')->defaultValue(null)->end()
-                ->scalarNode('mfa_serial')->defaultValue(null)->end()
-                ->scalarNode('cloudfront_keypair')->defaultValue(null)->end()
-                ->scalarNode('cloudfront_pem')->defaultValue(null)->end()
-                ->scalarNode('default_cache_config')->defaultValue(null)->end()
-                ->arrayNode('enable_extensions')
-                    ->defaultValue(array())
-                    ->prototype('scalar')
-                    ->end()
-                ->end()
-                ->scalarNode('sdk_path')->defaultValue('%kernel.root_dir%/../vendor/amazonwebservices/aws-sdk-for-php/sdk.class.php')->end()
-                ->booleanNode('certificate_authority')->defaultFalse()->end()
-                ->booleanNode('disable_auto_config')->defaultFalse()->end()
-            ->end();
+
+        $this->addWSConfiguration($rootNode);
+        $this->addServicesConfiguration($rootNode);
 
         return $treeBuilder;
     }
+
+    private function addWSConfiguration(ArrayNodeDefinition $node){
+        $node
+            ->children()
+                ->arrayNode('credentials')
+                    ->children()
+                        ->scalarNode('key')->isRequired()->end()
+                        ->scalarNode('secret')->isRequired()->end()
+                    ->end() //children
+                ->end() //credentials
+                ->arrayNode('shared_config')
+                    ->children()
+                        ->scalarNode('account_id')->defaultValue(null)->end()
+                        ->scalarNode('canonical_id')->defaultValue(null)->end()
+                        ->scalarNode('canonical_name')->defaultValue(null)->end()
+                        ->scalarNode('mfa_serial')->defaultValue(null)->end()
+                        ->scalarNode('cloudfront_keypair')->defaultValue(null)->end()
+                        ->scalarNode('cloudfront_pem')->defaultValue(null)->end()
+                        ->scalarNode('default_cache_config')->defaultValue(null)->end()
+                        ->arrayNode('enable_extensions')->defaultValue(array())->prototype('scalar')->end()->end()
+                        ->booleanNode('certificate_authority')->defaultFalse()->end()
+                        ->booleanNode('disable_auto_config')->defaultFalse()->end()
+                    ->end() //children
+                ->end() //shared_config
+            ->end(); //children
+    }
+
+    private function addServicesConfiguration(ArrayNodeDefinition $node){
+
+        //TODO: adapte config to given aws.config.yml
+        $node
+            ->children()
+                ->arrayNode('services')
+                    ->children()
+                        ->arrayNode('S3')
+                            ->children()
+                                ->booleanNode('isInjectable')->isRequired()->defaultFalse()->end()
+                                    ->scalarNode('uploadBucket')->isRequired()->end()
+                                        ->arrayNode('upload')
+                                        ->children()
+                                        ->scalarNode('rentalBasePath')->isRequired()->end()
+                                        ->scalarNode('profilePictureBaseUrl')->isRequired()->end()
+                                        ->scalarNode('drivingLicenceBaseUrl')->isRequired()->end()
+                                        ->end()
+                                        ->end() //upload
+                                        ->end()
+                                        ->end() //amazon s3
+                                        ->arrayNode('CloudFront')
+                                        ->children()
+                                        ->booleanNode('isInjectable')->isRequired()->defaultFalse()->end()
+                                        ->scalarNode('cf_uploads')->isRequired()->end()
+                                ->scalarNode('cf_assets')->isRequired()->end()
+                            ->end() //children
+                        ->end() //Cloud front
+                    ->end() //children
+                ->end() //services
+            ->end(); //children
 }
