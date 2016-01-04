@@ -18,7 +18,7 @@ use Cybernox\AmazonWebServicesBundle\StreamWrapper\S3StreamWrapper;
 /**
  * AmazonWebServicesBundle Main Bundle Class
  */
-class CybernoxAmazonWebServicesBundle extends Bundle
+class AmazonWebServicesBundle extends Bundle
 {
     /**
      * {@inheritdoc}
