@@ -39,7 +39,7 @@ class SharedConfig {
 
         $credentials = new Credentials($this->getKey(), $this->getSecret());
 
-       // it's more bette to use Credentials provide.
+       // it's more bette to use Credentials provider.
        // possibility to use memorize function which will cache your credentials
        // and optimize performances
 

@@ -3,6 +3,7 @@
 /**
  * @package    AmazonWebServicesBundle
  * @author     Mark Badolato <mbadolato@cybernox.com>
+ * @author     El Mehdi Mouddene <mouddene@gmail.com>
  * @copyright  Copyright (c) CyberNox Technologies. All rights reserved.
  * @license    http://www.opensource.org/licenses/BSD-2-Clause BSD License
  *
@@ -16,9 +17,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Cybernox\AmazonWebServicesBundle\StreamWrapper\S3StreamWrapper;
 
 /**
- * AmazonWebServicesBundle Main Bundle Class
+ * ThePhalconsAmazonWebServicesBundle Main Bundle Class
  */
-class CybernoxAmazonWebServicesBundle extends Bundle
+class ThePhalconsAmazonWebServicesBundle extends Bundle
 {
     /**
      * {@inheritdoc}
