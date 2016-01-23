@@ -32,7 +32,8 @@ class ThePhalconsAmazonWebServicesExtension extends Extension
 
         //not used any more services will be defined during configuration loading
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.xml');
+        $loader->load('aws_config.xml');
+        $loader->load('aws_service.xml');
 
         foreach ($config as $key => $value) {
             $container->setParameter('the_phalcons_amazon_web_services.' . $key, $value);
