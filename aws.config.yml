@@ -1,11 +1,13 @@
 
 thephalcons_amazon_web_services:
-    enable_extensions: false
+    # for stream wrapper use : [S3, SES ...]
+    enable_extensions:              []
     credentials:
         key:                        <YOUR APP KEY>
         secret:                     <YOUT APP SECRET>
     shared_config:
-        region:                     'eu_west_1'
+        region:                     %aws_region%
+        version:                    %aws_version%
         account_id:                 %aws_account_id%
         canonical_id:               %aws_canonical_id%
         canonical_name:             %aws_canonical_name%
@@ -13,29 +15,18 @@ thephalcons_amazon_web_services:
         cloudfront_keypair:         %aws_cloudfront_keypair%
         cloudfront_pem:             %aws_cloudfront_pem%
         default_cache_config:       null
-        enable_extensions:          []
         certificate_authority:      false
         disable_auto_config:        false
     services:
-        #For each service you want to inject:
-          #add service name exp :
-            #SQS:
-                #set to true if you'ill use it as service in your code
-                #false for global config
-                #injectable: true
+
         S3:
-        #injectable set to true means that the wrapper service will be injected in runtime
-            injectable:             true
             bucket:                 <YOUR BUCKET NAME>
             #... add all used bucket like assets bucket or upload bucket, can be accessed
             # using container in your code
-            # example $container->getParameter('services.S3.{key}')
         CloudFront:
-            injectable:             false
-            #asset_distribution:    http://d2aqddmeyyyfie.cloudfront.net
+            web_distribution:    http://xxxxxxxxxxxxxx.cloudfront.net
             #upload_distribution:   http://xxxxxxxxxxxxxx.cloudfront.net
         SES:
-            injectable:             true
+            verified_addresse:      <YOUR Verified @>
             #for more information how to use SES service
             #http://docs.aws.amazon.com/aws-sdk-php/v2/guide/service-ses.html
-            #verified_addresse:      <YOUR Verified @>
