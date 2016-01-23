@@ -2,7 +2,7 @@
 
 <phpunit colors="true" bootstrap="Tests/bootstrap.php">
     <testsuites>
-        <testsuite name="AmazonWebServicesBundle Test Suite">
+        <testsuite name="ThePhalconsAmazonWebServicesBundle Test Suite">
             <directory suffix="Test.php">./Tests/</directory>
         </testsuite>
     </testsuites>

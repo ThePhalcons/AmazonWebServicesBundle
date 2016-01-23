@@ -5,26 +5,28 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="aws.class">Cybernox\AmazonWebServicesBundle\AmazonWebServices</parameter>
-        <parameter key="aws_factory.class">Cybernox\AmazonWebServicesBundle\AmazonWebServicesFactory</parameter>
-
-        <parameter key="cybernox_amazon_web_services.sdk_path" />
+        <parameter key="aws.class">AmazonWebServicesBundle\AmazonWebServices</parameter>
+        <parameter key="aws_factory.class">AmazonWebServicesBundle\AmazonWebServicesFactory</parameter>
     </parameters>
 
     <services>
         <service id="aws" class="%aws.class%" public="false">
             <argument type="collection">
-                <argument key="key">%cybernox_amazon_web_services.key%</argument>
-                <argument key="secret">%cybernox_amazon_web_services.secret%</argument>
-                <argument key="account_id">%cybernox_amazon_web_services.account_id%</argument>
-                <argument key="canonical_id">%cybernox_amazon_web_services.canonical_id%</argument>
-                <argument key="canonical_name">%cybernox_amazon_web_services.canonical_name%</argument>
-                <argument key="mfa_serial">%cybernox_amazon_web_services.mfa_serial%</argument>
-                <argument key="cloudfront_keypair">%cybernox_amazon_web_services.cloudfront_keypair%</argument>
-                <argument key="cloudfront_pem">%cybernox_amazon_web_services.cloudfront_pem%</argument>
-                <argument key="default_cache_config">%cybernox_amazon_web_services.default_cache_config%</argument>
-                <argument key="enable_extensions">%cybernox_amazon_web_services.enable_extensions%</argument>
-                <argument key="certificate_authority">%cybernox_amazon_web_services.certificate_authority%</argument>
+                <argument key="enable_extensions">%the_phalcons_amazon_web_services.enable_extensions%</argument>
+
+                <argument key="key">%the_phalcons_amazon_web_services.credentials.key%</argument>
+                <argument key="secret">%the_phalcons_amazon_web_services.credentials.secret%</argument>
+
+                <argument key="account_id">%the_phalcons_amazon_web_services.shared_config.account_id%</argument>
+                <argument key="region">%the_phalcons_amazon_web_services.shared_config.region%</argument>
+                <argument key="version">%the_phalcons_amazon_web_services.shared_config.version%</argument>
+                <argument key="canonical_id">%the_phalcons_amazon_web_services.shared_config.canonical_id%</argument>
+                <argument key="canonical_name">%the_phalcons_amazon_web_services.shared_config.canonical_name%</argument>
+                <argument key="mfa_serial">%the_phalcons_amazon_web_services.shared_config.mfa_serial%</argument>
+                <argument key="cloudfront_keypair">%the_phalcons_amazon_web_services.shared_config.cloudfront_keypair%</argument>
+                <argument key="cloudfront_pem">%the_phalcons_amazon_web_services.shared_config.cloudfront_pem%</argument>
+                <argument key="default_cache_config">%the_phalcons_amazon_web_services.shared_config.default_cache_config%</argument>
+                <argument key="certificate_authority">%the_phalcons_amazon_web_services.shared_config.certificate_authority%</argument>
              </argument>
         </service>
 

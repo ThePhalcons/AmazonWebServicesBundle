@@ -19,7 +19,7 @@
         "aws/aws-sdk-php": "*"
     },
     "autoload": {
-        "psr-0": { "ThePhalcons\\AmazonWebServicesBundle": "" }
+        "psr-0": { "AmazonWebServicesBundle": "" }
     },
-    "target-dir": "ThePhalcons/AmazonWebServicesBundle"
+    "target-dir": "AmazonWebServicesBundle"
 }

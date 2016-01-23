@@ -1,24 +1,31 @@
 <?php
-
 /**
- * @package    AmazonWebServicesBundle
- * @author     Mark Badolato <mbadolato@cybernox.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * Created by PhpStorm.
+ * User: elmehdi
+ * Date: 27/10/15
+ * Time: 20:52
  */
 
 namespace AmazonWebServicesBundle;
+use AmazonWebServicesBundle\AmazonWebServices;
+
 
 /**
- * AmazonWebServicesBundle Factory providing requested AWS objects
+ * Class AmazonWebServicesFactory
+ *
+ * @package AmazonWebServicesBundle\ServiceFactory
+ *
+ * @Author : El Mehdi Mouddene  <mouddene@gmail.com>
+ *
+ * Initial version created on: 27/10/15 20:52
+ * 
  */
-class AmazonWebServicesFactory
-{
+class AmazonWebServicesFactory {
+
     /**
      * @var array $validServiceTypes The names of the Amazon Web Services that may be used
      */
-    private $validServiceTypes = array(
+    private $supportedServiceTypes = array(
         'AS',
         'CloudFormation',
         'CloudFront',
@@ -43,47 +50,23 @@ class AmazonWebServicesFactory
     );
 
     /**
-     * Constructor
-     *
-     * @param array $config     The user defined config
+     * checks if the given service type is supported
+     * @param $serviceType
+     * @return bool
      */
-    public function __construct(array $config)
-    {
-        if ($config['disable_auto_config'] && (! defined('AWS_DISABLE_CONFIG_AUTO_DISCOVERY'))) {
-            define('AWS_DISABLE_CONFIG_AUTO_DISCOVERY', TRUE);
-        }
-
-        if (isset($config['sdk_path']) && file_exists($config['sdk_path'])) {
-            require_once $config['sdk_path'];
-        }
+    private function isSupportedServiceType($serviceType){
+        return in_array($serviceType, $this->supportedServiceTypes);
     }
 
     /**
-     * Get an Amazon Web Service object
-     *
-     * @param  AmazonWebServices $aws         An AmazonWebServices Service instance
-     * @param  string            $serviceType The requested Amazon Web Service type
-     * @return mixed The requested Amazon Web Service Object
-     * @throws \RuntimeException
+     * Factory service creation method
+     * @param SharedConfig $configs
+     * @param $serviceType
+     * @return mixed
      */
     public function get(AmazonWebServices $aws, $serviceType)
     {
-        if (! $this->isValidServiceType($serviceType)) {
-            throw new \RuntimeException(sprintf('Invalid Amazon Web Service Type requested [%s]', $serviceType));
-        }
-
-        $serviceObject = 'Amazon' . $serviceType;
-        return new $serviceObject($aws->getParameters());
-    }
-
-    /**
-     * Determine if a requested Amazon Web Service is valid or not
-     *
-     * @param $type string The requested Amazon Web Service type
-     * @return bool
-     */
-    private function isValidServiceType($type)
-    {
-        return (in_array($type, $this->validServiceTypes) ? true : false);
+        //delegate service creation to aws sdk
+        return $aws->createAwsServiceClient($serviceType);
     }
 }

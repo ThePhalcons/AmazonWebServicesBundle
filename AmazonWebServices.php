@@ -1,37 +1,68 @@
 <?php
 
-/**
- * @package    AmazonWebServicesBundle
- * @author     Mark Badolato <mbadolato@cybernox.com>
- * @copyright  Copyright (c) CyberNox Technologies. All rights reserved.
- * @license    http://www.opensource.org/licenses/BSD-2-Clause BSD License
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace AmazonWebServicesBundle;
 
+use Aws\Sdk;
+use Aws\Credentials\Credentials;
+
 /**
- * AmazonWebServicesBundle Main Service class
+ * Class AmazonWebServices
+ *
+ * @package AmazonWebServicesBundle\SharedConfig
+ *
+ * @Author : El Mehdi Mouddene  <mouddene@gmail.com>
+ *
+ * Initial version created on: 10/28/2015
+ *
  */
-class AmazonWebServices
-{
-    private $parameters = null;
+class AmazonWebServices {
 
     /**
-     * Constructor
-     *
-     * @param array $parameters An array of configuration options
+     * @var array
      */
-    public function __construct(array $parameters)
-    {
-        $this->parameters = $parameters;
+    private $configs = array();
 
-        \CFCredentials::set(array(
-            'runtime'  => $parameters,
-            '@default' => 'runtime'
-        ));
+    /**
+     * @var Sdk
+     */
+    private $sdk;
+
+    /**
+     * __constructor
+     * @param array $config
+     */
+    public function __construct($config = array())
+    {
+        $this->configs = $config;
+
+        // create a new aws credentials provider
+
+        $credentials = new Credentials($this->getKey(), $this->getSecret());
+
+        // it's more bette to use Credentials provide.
+        // possibility to use memorize function which will cache your credentials
+        // and optimize performances
+
+        $this->sdk = new Sdk(
+            array(
+                'region'  => $this->getRegion(),
+                // use specific aws sdk php version or latest version if not defined
+                'version' => ($this->getVersion() != '' ) ? $this->getVersion() : 'latest',
+                'credentials' => $credentials
+            )
+        );
+
+
+    }
+
+    /**
+     * Create aws service clients
+     * @param $serviceType
+     * @return mixed
+     */
+    public function createAwsServiceClient($serviceType){
+
+        return $this->sdk->createClient($serviceType);
     }
 
     /**
@@ -41,9 +72,8 @@ class AmazonWebServices
      */
     public function accountId()
     {
-        return $this->parameters['account_id'];
+        return $this->configs['account_id'];
     }
-
     /**
      * Get the canonicalId
      *
@@ -51,9 +81,8 @@ class AmazonWebServices
      */
     public function canonicalId()
     {
-        return $this->parameters['canonical_id'];
+        return $this->configs['canonical_id'];
     }
-
     /**
      * Get the cononicalName
      *
@@ -61,9 +90,8 @@ class AmazonWebServices
      */
     public function canonicalName()
     {
-        return $this->parameters['canonical_name'];
+        return $this->configs['canonical_name'];
     }
-
     /**
      * Get the certificateAuthority
      *
@@ -71,9 +99,8 @@ class AmazonWebServices
      */
     public function certificateAuthority()
     {
-        return (bool) $this->parameters['certificate_authority'];
+        return (bool) $this->configs['certificate_authority'];
     }
-
     /**
      * Get the cloudFrontKeypair
      *
@@ -81,9 +108,8 @@ class AmazonWebServices
      */
     public function cloudfrontKeypair()
     {
-        return $this->parameters['cloudfront_keypair'];
+        return $this->configs['cloudfront_keypair'];
     }
-
     /**
      * Get the cloudfrontPem
      *
@@ -91,9 +117,8 @@ class AmazonWebServices
      */
     public function cloudfrontPrivateKeyPem()
     {
-        return $this->parameters['cloudfront_pem'];
+        return $this->configs['cloudfront_pem'];
     }
-
     /**
      * Get the defaultCacheConfig
      *
@@ -101,9 +126,8 @@ class AmazonWebServices
      */
     public function defaultCacheConfig()
     {
-        return $this->parameters['default_cache_config'];
+        return $this->configs['default_cache_config'];
     }
-
     /**
      * enableExtensions
      *
@@ -111,9 +135,8 @@ class AmazonWebServices
      */
     public function enableExtensions()
     {
-        return (bool) $this->parameters['enable_extensions'];
+        return (bool) $this->configs['enable_extensions'];
     }
-
     /**
      * Get the key
      *
@@ -121,19 +144,17 @@ class AmazonWebServices
      */
     public function getKey()
     {
-        return $this->parameters['key'];
+        return $this->configs['key'];
     }
-
     /**
      * Get the parameters
      *
      * @return array The array of all configuration parameters provided via the bundle configuration
      */
-    public function getParameters()
+    public function getConfigs()
     {
-        return $this->parameters;
+        return $this->configs;
     }
-
     /**
      * Get the mfaSerial
      *
@@ -141,16 +162,35 @@ class AmazonWebServices
      */
     public function mfaSerial()
     {
-        return $this->parameters['mfa_serial'];
+        return $this->configs['mfa_serial'];
     }
-
     /**
      * Get the secret
      *
      * @return string The secret key provided via the bundle configuration
      */
-    public function secret()
+    public function getSecret()
     {
-        return $this->parameters['secret'];
+        return $this->configs['secret'];
+    }
+
+    /**
+     * Get the mfaSerial
+     *
+     * @return string The mfa serial provided via the bundle configuration
+     */
+    public function getVersion()
+    {
+        return $this->configs['version'];
+    }
+    /**
+     * Get the secret
+     *
+     * @return string The secret key provided via the bundle configuration
+     */
+    public function getRegion()
+    {
+        return $this->configs['region'];
     }
 }
+

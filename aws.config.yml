@@ -1,8 +1,9 @@
 
-amazon_web_services:
+thephalcons_amazon_web_services:
+    enable_extensions: false
     credentials:
-        key:                        <YOUR APP KEY>               #required
-        secret:                     <YOUT APP SECRET>            #required
+        key:                        <YOUR APP KEY>
+        secret:                     <YOUT APP SECRET>
     shared_config:
         region:                     'eu_west_1'
         account_id:                 %aws_account_id%
@@ -31,11 +32,10 @@ amazon_web_services:
             # example $container->getParameter('services.S3.{key}')
         CloudFront:
             injectable:             false
-            #asset_distribution:    http://xxxxxxxxxxxxxx.cloudfront.net
+            #asset_distribution:    http://d2aqddmeyyyfie.cloudfront.net
             #upload_distribution:   http://xxxxxxxxxxxxxx.cloudfront.net
         SES:
             injectable:             true
-            #verified_sender_address:      <YOUR Verified @>
-            #verified_no_reply_address:    <YOUR Verified @>
             #for more information how to use SES service
             #http://docs.aws.amazon.com/aws-sdk-php/v2/guide/service-ses.html
+            #verified_addresse:      <YOUR Verified @>
