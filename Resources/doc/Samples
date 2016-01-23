@@ -1,0 +1,65 @@
+
+## Quick Examples
+
+### Create an Amazon S3 client
+
+```php
+   
+    /**
+        * @Route("/aws/test", name="_demo")
+        * @Template()
+        */
+       public function indexAction()
+       {
+   
+           /** @var S3Client $s3 */
+           $s3 = $this->container->get('aws_s3');
+           
+        }
+    
+```
+
+### Send file to a bucket
+
+```php
+/**
+     * send file to aws a bucket
+     * @param $absolutePath String locale file
+     * @param $awsTargetPath String  aws targetPath
+     * @return \Aws\Result
+     * @throws \NotFoundBucket
+     */
+    public function multipartUploader($absolutePath, $awsTargetPath)
+    {
+        $bucket = 'my_bucket_name';
+
+        $uploader = new MultipartUploader($this->s3, $absoluteFilePath, [
+            'bucket' => $absolutePath,
+            'key'    =>  $awsTargetPath,
+        ]);
+
+
+        do {
+            try {
+                $result = $uploader->upload();
+            } catch (MultipartUploadException $e) {
+                $uploader = new MultipartUploader($this->s3, $absoluteFilePath, [
+                    'state' => $e->getState(),
+                ]);
+            }
+        } while (!isset($result));
+
+        try {
+            $result = $uploader->upload();
+            return $result;
+        } catch (MultipartUploadException $e) {
+            throw $e;
+        }
+    }
+```
+
+### Send email using SES
+
+[SES Mailing sevice]
+
+   [SES Mailing sevice]: <https://github.com/ThePhalcons/AmazonWebServicesBundle/blob/dev-master/Services/SESMailingService.php>

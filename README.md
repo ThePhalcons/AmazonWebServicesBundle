@@ -18,9 +18,35 @@ This bundle uses the latest [AWS SDK for PHP](http://github.com/amazonwebservice
 
 For installation, configuration, and usage details, please see [`Resources/doc/README.md`](https://github.com/ThePhalcons/AmazonWebServicesBundle/blob/master/Resources/doc/README.md)
 
-Changelog
----------
-PR#15 submitted by @Fran6co requires a type chnage to the enable_extensions parameter in config.yml. See step 5b of [Resources/doc/README.md`](https://github.com/ThePhalcons/AmazonWebServicesBundle/blob/master/Resources/doc/README.md) for the new format.
+
+## Resources
+
+* [Get started] – For getting started usage information
+* [Sample Project][sdk-sample] - A quick, sample project to help get you started
+* [Issues][sdk-issues] – Report issues, submit pull requests, and get involved
+  (see [Apache 2.0 License][sdk-license])
+
+## Features
+
+* Provides easy-to-use HTTP clients for all supported AWS
+  [services][docs-services], [regions][docs-rande], and authentication
+  protocols.
+* Is built on [Guzzle][guzzle-docs], and utilizes many of its features,
+  including persistent connections, asynchronous requests, middlewares, etc.
+* Provides convenience features including easy result pagination via
+  [Paginators][docs-paginators], [Waiters][docs-waiters], and simple
+  [Result objects][docs-results].
+* Provides a [multipart uploader tool][docs-s3-multipart] for Amazon S3 and
+  Amazon Glacier that can be paused and resumed.
+* Provides an [Amazon S3 Stream Wrapper][docs-streamwrapper], so that you can
+  use PHP's native file handling functions to interact with your S3 buckets and
+  objects like a local filesystem.
+* Provides the [Amazon DynamoDB Session Handler][docs-ddbsh] for easily scaling
+  sessions on a fast, NoSQL database.
+* Automatically uses [IAM Instance Profile Credentials][aws-iam-credentials] on
+  configured Amazon EC2 instances.
+
+
 
 Example Use Cases
 -----------------
@@ -36,3 +62,5 @@ License
 This bundle is under the MIT license. See the complete license in the bundle:
 
     Resources/meta/LICENSE
+
+   [Get started]: <https://github.com/ThePhalcons/AmazonWebServicesBundle/blob/dev-master/Resources/doc/README.md>

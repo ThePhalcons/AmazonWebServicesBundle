@@ -154,6 +154,7 @@ class StorageService {
     }
 
     /**
+     * send file to aws bucket
      * @param $absolutePath String locale file
      * @param $awsTargetPath String  aws targetPath
      * @return \Aws\Result
