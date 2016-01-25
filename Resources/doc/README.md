@@ -14,28 +14,20 @@ Once objects have been created, you have full access to the SDK. Please see the 
 
 AmazonWebServicesBundle may be installed via the deps file (Symfony 2.0.x) or via Composer (2.1+)
 
-1a) Via deps file
 
-Add the AWS SDK for PHP library and the Amazon Web Services Bundle to your project's deps file:
-
-```bash
-[aws-sdk-for-php]
-    git=http://github.com/amazonwebservices/aws-sdk-for-php.git
-    target=/amazonwebservices/aws-sdk-for-php
-
-[AmazonWebServicesBundle]
-    git=http://github.com/Cybernox/AmazonWebServicesBundle.git
-    target=/bundles/Cybernox/AmazonWebServicesBundle
-```
-
-1b) Via Composer
+1) Via Composer
 
 Go to the ```require``` section of your composer.json file and add
 
 ```json
-"cybernox/amazon-webservices-bundle": ">=1.5.4"
+"thephalcons/amazon-webservices-bundle": ">=2.1"
 ```
 
+OR using command line
+
+```
+composer require thephalcons/amazon-webservices-bundle
+```
 to the section, along with other packages you require.  Now run ```composer.phar install``` if this is a new installation, or ```composer.phar update``` if you are updating an existing installation.
 
 2) Add AmazonWebServicesBundle to your application kernel:
@@ -48,7 +40,7 @@ public function registerBundles()
 {
     return array(
         // ...
-        new Cybernox\AmazonWebServicesBundle\CybernoxAmazonWebServicesBundle(),
+        new AmazonWebServicesBundle\ThePhalconsAmazonWebServicesBundle(),
         // ...
     );
 }
@@ -56,7 +48,7 @@ public function registerBundles()
 
 3) **_If you are using Composer (1b), you may skip this step_**
 
-Register the Cybernox namespace:
+Register the ThePhalcons namespace:
 
 ```php
 <?php
@@ -64,7 +56,7 @@ Register the Cybernox namespace:
 // app/autoload.php
 $loader->registerNamespaces(array(
     // ...
-    'Cybernox' => __DIR__.'/../vendor/bundles',
+    'ThePhalcons' => __DIR__.'/../vendor/bundles',
     // ...
 ));
 ```
@@ -89,6 +81,8 @@ $loader->registerNamespaces(array(
     aws_mfa_serial                 = YOUR_MFA_SERIAL
     aws_cloudfront_keypair         = YOUR_CLOUDFRONT_KEYPAIR_ID
     aws_cloudfront_pem             = YOUR_CLOUDFRONT_PRIVATE_KEY_PEM
+    aws_region                     = YOUR_REGION
+    aws_version                    = 'latest' #or YOUR_VERSION 
 ```
 
 **Note, presently only aws_key and aws_secret are being used when constructing objects. Setting them is fine, but it won't do anything.**
@@ -106,19 +100,24 @@ $loader->registerNamespaces(array(
 ```yml
 // app/config/config.yml
 # Amazon Web Services Configuration
-cybernox_amazon_web_services:
-    key:                        %aws_key%
-    secret:                     %aws_secret%
-    account_id:                 %aws_account_id%
-    canonical_id:               %aws_canonical_id%
-    canonical_name:             %aws_canonical_name%
-    mfa_serial:                 %aws_mfa_serial%
-    cloudfront_keypair:         %aws_cloudfront_keypair%
-    cloudfront_pem:             %aws_cloudfront_pem%
-    default_cache_config:       apc
-    enable_extensions:          [] 
-    certificate_authority:      false
-    disable_auto_config:        false
+thephalcons_amazon_web_services:
+    # for stream wrapper use : [S3, SES ...]
+    enable_extensions:              []
+    credentials:
+        key:                        <YOUR APP KEY>
+        secret:                     <YOUT APP SECRET>
+    shared_config:
+        region:                     %aws_region%
+        version:                    %aws_version%
+        account_id:                 %aws_account_id%
+        canonical_id:               %aws_canonical_id%
+        canonical_name:             %aws_canonical_name%
+        mfa_serial:                 %aws_mfa_serial%
+        cloudfront_keypair:         %aws_cloudfront_keypair%
+        cloudfront_pem:             %aws_cloudfront_pem%
+        default_cache_config:       null
+        certificate_authority:      false
+        disable_auto_config:        false
 ```
 
 **Note, as in 5a) above, only the key and secret are presently being used, so it is safe to omit the rest if you wish.**
@@ -290,4 +289,9 @@ _Please note, at this time, thorough testing has not been completed. Because thi
     <td><a href="http://docs.amazonwebservices.com/AWSSDKforPHP/latest/#i=AmazonSWF">AmazonSWF</a></td>
     <td>Amazon Simple Workflow</td>
   </tr>
+  <tr>
+      <td>aws_Route53</td>
+      <td><a href="http://http://docs.aws.amazon.com/aws-sdk-php/v2/guide/service-route53.html">AmazonRoute53</a></td>
+      <td>Amazon Route 53</td>
+    </tr>
 </table>

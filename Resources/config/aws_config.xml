@@ -119,5 +119,9 @@
         <service id="aws_swf" class="AmazonSWF" parent="aws_service">
             <argument>SWF</argument>
         </service>
+
+        <service id="aws_route53" class="AmazonRoute53" parent="aws_service">
+            <argument>Route53</argument>
+        </service>
     </services>
 </container>

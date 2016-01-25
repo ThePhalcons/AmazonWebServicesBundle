@@ -20,7 +20,7 @@ class SESMailingServiceTest extends PHPUnit_Framework_TestCase
     {
         $client = $this->createClient();
         $ses = $client->getContainer()->get('amazon_SES');
-        assert( $ses !== null, 'SES is not defined');
+        assert($ses !== null, 'SES is not defined');
     }
 
     /**
@@ -30,35 +30,22 @@ class SESMailingServiceTest extends PHPUnit_Framework_TestCase
     {
         $client = $this->createClient();
         $mailer = $client->getContainer()->get('ws.service.mailing');
-        assert( $mailer !== null, 'Mailing Service injection is not working');
-        assert( $mailer instanceof MailingService, 'given Object is not an instance of MailingService');
+        assert($mailer !== null, 'Mailing Service injection is not working');
+        assert($mailer instanceof MailingService, 'given Object is not an instance of MailingService');
     }
 
-    public function testSendMail()
-    {
-        $client = $this->createClient();
-        /**@var $mailer MailingService */
-        $mailer = $client->getContainer()->get('ws.service.mailing');
-        $mailer->setSubject('Drivy UNIT TEST')
-            ->addToAddress('mouddene@gmail.com')
-            ->setMessage('UNIT TEST is working');
-        $result = $mailer->sendEmail();
-
-        var_dump($result);
-        assert(true === true, "todo");
-    }
-
-    public function testListVerifiedEmailsAddresses()
-    {
-        $client = $this->createClient();
-        /**@var $ses SesClient */
-
-        $ses = $client->getContainer()->get('amazon_SES');
-
-        $list = $ses->listVerifiedEmailAddresses(array());
-
-        // TODO :
-        assert(true == true, 'source email is not verified');
-
-
-    }
+//    public function testSendMail()
+//    {
+//        $client = $this->createClient();
+//        /**@var $mailer MailingService */
+//        $mailer = $client->getContainer()->get('ws.service.mailing');
+//        $mailer->setSubject('Drivy UNIT TEST')
+//            ->addToAddress('mouddene@gmail.com')
+//            ->setMessage('UNIT TEST is working');
+//        $result = $mailer->sendEmail();
+//
+//        var_dump($result);
+//        assert(true === true, "todo");
+//    }
+//
+}
