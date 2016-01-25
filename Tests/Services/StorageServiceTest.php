@@ -20,26 +20,24 @@ class StorageServiceTest extends WebTestCase
         assert( $s3 !== null, 'Requested service unavailble');
     }
 
-    public function testDoesContainerHasUploadBucketParameter(){
-        $client = $this->createClient();
-        assert($client->getContainer()->hasParameter('the_phalcons_amazon_web_services.services.S3.bucket') === true, "Container hasn't the_phalcons_amazon_web_services.services.S3.bucket parameter");
-    }
 
     public function testCreateBucket(){
         /** @var S3Client $client */
         $client = $this->createClient();
-        $client->createBucket(array(
+        $s3 = $client->getContainer()->get('amazon_S3');
+
+        $s3->createBucket(array(
             'Bucket' => 'mybucket',
             'LocationConstraint' => 'us-west-2',
         ));
 
-        assert($client->doesBucketExist("mybucket") === true, "bucket doesn't exist !!!")
-        $client->deleteBucket(array(
+        assert($s3->doesBucketExist("mybucket") === true, "bucket doesn't exist !!!")
+        $s3->deleteBucket(array(
             'Bucket' => 'mybucket',
             'LocationConstraint' => 'us-west-2',
         ));
 
-        assert($client->doesBucketExist("mybucket") === false, "bucket hasn't been deleted !!!")
+        assert($s3->doesBucketExist("mybucket") === false, "bucket hasn't been deleted !!!")
     }
 
 }

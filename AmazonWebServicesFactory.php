@@ -47,6 +47,7 @@ class AmazonWebServicesFactory {
         'SQS',
         'STS',
         'SWF',
+        'Route53',
     );
 
     /**
