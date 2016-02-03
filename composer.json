@@ -15,7 +15,7 @@
     ],
     "require": {
         "php": ">=5.5",
-        "symfony/framework-bundle": "~2.3",
+        "symfony/framework-bundle": ">=2.3",
         "aws/aws-sdk-php": "*"
     },
     "autoload": {
