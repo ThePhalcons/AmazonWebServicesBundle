@@ -6,7 +6,7 @@ This is a Symfony2 Bundle for interfacing with Amazon Web Services (AWS).
 
 This bundle utilizes the [AWS SDK for PHP](http://github.com/amazonwebservices/aws-sdk-for-php) by loading the SDK and providing the means to instantiate the SDK's various web service objects, passing them back to you for direct use.
 
-The AWS SDK for PHP is the the official Amazon-supported library for interfacing with with Amazon's Web Service offerings. As such, the bundle merely provides a means (via Dependency Injection) to get at the SDK's various web service objects. There is no additional functionality at present time.
+The AWS SDK for PHP is the official Amazon-supported library for interfacing with Amazon's Web Service offerings. As such, the bundle merely provides a means (via Dependency Injection) to get at the SDK's various web service objects. There is no additional functionality at present time.
 
 Once objects have been created, you have full access to the SDK. Please see the [AWS SDK for PHP documentation](http://docs.amazonwebservices.com/AWSSDKforPHP/latest/) for a list of each service's API calls.
 
@@ -128,7 +128,7 @@ the_phalcons_amazon_web_services:
 
 ## Usage ##
 
-Once installed, you simply need to request the appropriate service for the Amazon Web Service object you wish to use. The returned object will then allow you full access the the API for the requested service.
+Once installed, you simply need to request the appropriate service for the Amazon Web Service object you wish to use. The returned object will then allow you full access the API for the requested service.
 
 **Please see the [AWS SDK for PHP documentation](http://docs.amazonwebservices.com/AWSSDKforPHP/latest/) for a list of each service's API calls.**
 
