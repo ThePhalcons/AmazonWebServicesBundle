@@ -24,7 +24,7 @@
 
   $credentials = new Credentials($this->getKey(), $this->getSecret());
 
-    // it's more bette to use Credentials provide.
+    // it's more better to use Credentials provide.
     // possibility to use memorize function which will cache your credentials
     // and optimize performances
 

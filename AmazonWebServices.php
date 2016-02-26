@@ -35,24 +35,17 @@ class AmazonWebServices {
     {
         $this->configs = $config;
 
-        // create a new aws credentials provider
-
-        $credentials = new Credentials($this->getKey(), $this->getSecret());
-
-        // it's more bette to use Credentials provide.
-        // possibility to use memorize function which will cache your credentials
-        // and optimize performances
-
-        $this->sdk = new Sdk(
-            array(
-                'region'  => $this->getRegion(),
-                // use specific aws sdk php version or latest version if not defined
-                'version' => ($this->getVersion() != '' ) ? $this->getVersion() : 'latest',
-                'credentials' => $credentials
-            )
+        $options = array(
+            'region'  => $this->getRegion(),
+            // use specific aws sdk php version or latest version if not defined
+            'version' => ($this->getVersion() !== '') ? $this->getVersion() : 'latest',
         );
 
+        if ($this->getKey() !== '' && $this->getSecret() !== '') {
+            $options['credentials'] = new Credentials($this->getKey(), $this->getSecret());
+        }
 
+        $this->sdk = new Sdk($options);
     }
 
     /**
