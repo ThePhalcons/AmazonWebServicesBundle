@@ -13,7 +13,7 @@
 namespace AmazonWebServicesBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Cybernox\AmazonWebServicesBundle\StreamWrapper\S3StreamWrapper;
+use AmazonWebServicesBundle\StreamWrapper\S3StreamWrapper;
 
 /**
  * AmazonWebServicesBundle Main Bundle Class
