@@ -1,5 +1,5 @@
 {
-    "name":         "thephalcons/amazon-webservices-bundle",
+    "name":         "andrewlowther/amazon-webservices-bundle",
     "description":  "A Symfony2 Bundle for interfacing with Amazon Web Services (AWS)",
     "keywords":     ["amazon", "aws", "web services", "aws-sdk-php"],
     "license":      "MIT",
