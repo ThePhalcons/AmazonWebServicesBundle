@@ -113,8 +113,6 @@ class SESMailingService
     private function initMailer()
     {
         $this->setDefaultSource();
-        //TODO: remove on go live
-        $this->bccAddresses[] = 'mouddene@gmail.com';
     }
 
     /**
