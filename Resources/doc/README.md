@@ -100,7 +100,7 @@ $loader->registerNamespaces(array(
 ```yml
 // app/config/config.yml
 # Amazon Web Services Configuration
-thephalcons_amazon_web_services:
+the_phalcons_amazon_web_services:
     # for stream wrapper use : [S3, SES ...]
     enable_extensions:              []
     credentials:
